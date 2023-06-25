@@ -7,18 +7,39 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C1D1E2A2A3FC7F6008DC766 /* energy_screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C1D1E292A3FC7F6008DC766 /* energy_screen.swift */; };
+		0C1D1E2C2A3FC805008DC766 /* flight_screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C1D1E2B2A3FC805008DC766 /* flight_screen.swift */; };
+		0C8AF9532A1EAEE700A5202D /* app_url.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8AF9522A1EAEE700A5202D /* app_url.swift */; };
+		0C8AF9562A1EAF2C00A5202D /* endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8AF9552A1EAF2C00A5202D /* endpoint.swift */; };
+		0C8AF9592A1ED21300A5202D /* Electricity_Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8AF9582A1ED21300A5202D /* Electricity_Response.swift */; };
+		0CAB7CCE2A211FB70016BEDA /* Electricity_req.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAB7CCD2A211FB70016BEDA /* Electricity_req.swift */; };
+		0CC1EDF42A369D5000B83569 /* ClimateCrisis-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0CC1EDF32A369D5000B83569 /* ClimateCrisis-Regular.ttf */; };
+		0CC1EDF62A369D6600B83569 /* LuckiestGuy-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0CC1EDF52A369D6600B83569 /* LuckiestGuy-Regular.ttf */; };
+		0CC1EDF92A36A1B800B83569 /* fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC1EDF82A36A1B800B83569 /* fonts.swift */; };
 		0CF8DC2A2A1439F30035A545 /* Carbon_FusionApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF8DC292A1439F30035A545 /* Carbon_FusionApp.swift */; };
 		0CF8DC2C2A1439F30035A545 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF8DC2B2A1439F30035A545 /* ContentView.swift */; };
 		0CF8DC2E2A1439F40035A545 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CF8DC2D2A1439F40035A545 /* Assets.xcassets */; };
 		0CF8DC312A1439F40035A545 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CF8DC302A1439F40035A545 /* Preview Assets.xcassets */; };
+		0CF8DC3A2A143DB20035A545 /* network_manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF8DC392A143DB20035A545 /* network_manager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0C1D1E292A3FC7F6008DC766 /* energy_screen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = energy_screen.swift; sourceTree = "<group>"; };
+		0C1D1E2B2A3FC805008DC766 /* flight_screen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = flight_screen.swift; sourceTree = "<group>"; };
+		0C8AF9522A1EAEE700A5202D /* app_url.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = app_url.swift; sourceTree = "<group>"; };
+		0C8AF9552A1EAF2C00A5202D /* endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = endpoint.swift; sourceTree = "<group>"; };
+		0C8AF9582A1ED21300A5202D /* Electricity_Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Electricity_Response.swift; sourceTree = "<group>"; };
+		0CAB7CCD2A211FB70016BEDA /* Electricity_req.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Electricity_req.swift; sourceTree = "<group>"; };
+		0CC1EDF32A369D5000B83569 /* ClimateCrisis-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ClimateCrisis-Regular.ttf"; sourceTree = "<group>"; };
+		0CC1EDF52A369D6600B83569 /* LuckiestGuy-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "LuckiestGuy-Regular.ttf"; sourceTree = "<group>"; };
+		0CC1EDF72A36A0FE00B83569 /* Carbon-Fusion-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Carbon-Fusion-Info.plist"; sourceTree = SOURCE_ROOT; };
+		0CC1EDF82A36A1B800B83569 /* fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fonts.swift; sourceTree = "<group>"; };
 		0CF8DC262A1439F30035A545 /* Carbon_Fusion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Carbon_Fusion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CF8DC292A1439F30035A545 /* Carbon_FusionApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Carbon_FusionApp.swift; sourceTree = "<group>"; };
 		0CF8DC2B2A1439F30035A545 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		0CF8DC2D2A1439F40035A545 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0CF8DC302A1439F40035A545 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		0CF8DC392A143DB20035A545 /* network_manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = network_manager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,9 +53,54 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C1D1E282A3FC7D8008DC766 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				0C1D1E292A3FC7F6008DC766 /* energy_screen.swift */,
+				0C1D1E2B2A3FC805008DC766 /* flight_screen.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		0C8AF9512A1EAECA00A5202D /* Url */ = {
+			isa = PBXGroup;
+			children = (
+				0C8AF9522A1EAEE700A5202D /* app_url.swift */,
+			);
+			path = Url;
+			sourceTree = "<group>";
+		};
+		0C8AF9542A1EAF1500A5202D /* endpoint */ = {
+			isa = PBXGroup;
+			children = (
+				0C8AF9552A1EAF2C00A5202D /* endpoint.swift */,
+			);
+			path = endpoint;
+			sourceTree = "<group>";
+		};
+		0C8AF9572A1ED1FF00A5202D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0C8AF9582A1ED21300A5202D /* Electricity_Response.swift */,
+				0CAB7CCD2A211FB70016BEDA /* Electricity_req.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0CC1EDF22A369D0100B83569 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				0CC1EDF32A369D5000B83569 /* ClimateCrisis-Regular.ttf */,
+				0CC1EDF52A369D6600B83569 /* LuckiestGuy-Regular.ttf */,
+				0CC1EDF82A36A1B800B83569 /* fonts.swift */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
 		0CF8DC1D2A1439F30035A545 = {
 			isa = PBXGroup;
 			children = (
+				0C1D1E282A3FC7D8008DC766 /* Screens */,
 				0CF8DC282A1439F30035A545 /* Carbon_Fusion */,
 				0CF8DC272A1439F30035A545 /* Products */,
 			);
@@ -51,6 +117,9 @@
 		0CF8DC282A1439F30035A545 /* Carbon_Fusion */ = {
 			isa = PBXGroup;
 			children = (
+				0CC1EDF72A36A0FE00B83569 /* Carbon-Fusion-Info.plist */,
+				0CC1EDF22A369D0100B83569 /* Font */,
+				0CF8DC372A143D7E0035A545 /* Data */,
 				0CF8DC292A1439F30035A545 /* Carbon_FusionApp.swift */,
 				0CF8DC2B2A1439F30035A545 /* ContentView.swift */,
 				0CF8DC2D2A1439F40035A545 /* Assets.xcassets */,
@@ -65,6 +134,25 @@
 				0CF8DC302A1439F40035A545 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		0CF8DC372A143D7E0035A545 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				0C8AF9572A1ED1FF00A5202D /* Model */,
+				0CF8DC382A143D8B0035A545 /* Network */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		0CF8DC382A143D8B0035A545 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				0C8AF9542A1EAF1500A5202D /* endpoint */,
+				0C8AF9512A1EAECA00A5202D /* Url */,
+				0CF8DC392A143DB20035A545 /* network_manager.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,8 +213,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0CC1EDF42A369D5000B83569 /* ClimateCrisis-Regular.ttf in Resources */,
 				0CF8DC312A1439F40035A545 /* Preview Assets.xcassets in Resources */,
 				0CF8DC2E2A1439F40035A545 /* Assets.xcassets in Resources */,
+				0CC1EDF62A369D6600B83569 /* LuckiestGuy-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,8 +227,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0CC1EDF92A36A1B800B83569 /* fonts.swift in Sources */,
 				0CF8DC2C2A1439F30035A545 /* ContentView.swift in Sources */,
+				0CAB7CCE2A211FB70016BEDA /* Electricity_req.swift in Sources */,
+				0C1D1E2C2A3FC805008DC766 /* flight_screen.swift in Sources */,
+				0CF8DC3A2A143DB20035A545 /* network_manager.swift in Sources */,
 				0CF8DC2A2A1439F30035A545 /* Carbon_FusionApp.swift in Sources */,
+				0C8AF9532A1EAEE700A5202D /* app_url.swift in Sources */,
+				0C1D1E2A2A3FC7F6008DC766 /* energy_screen.swift in Sources */,
+				0C8AF9592A1ED21300A5202D /* Electricity_Response.swift in Sources */,
+				0C8AF9562A1EAF2C00A5202D /* endpoint.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,6 +368,7 @@
 				DEVELOPMENT_TEAM = ABK2TMF98V;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Carbon-Fusion-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -299,6 +398,7 @@
 				DEVELOPMENT_TEAM = ABK2TMF98V;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Carbon-Fusion-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
