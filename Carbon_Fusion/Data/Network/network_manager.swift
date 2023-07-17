@@ -8,33 +8,47 @@
 import Foundation
 
 
-protocol NetworkServiceProtocol {
-    func createElectricity<T: Codable> ( body : T ) async throws -> Void
+protocol NetworkManager {
     func postElect<T: Codable> (body: T, completion: @escaping (Result<Data?, ApiError>) -> Void)
+    func postData(from url: URLRequest, completion: @escaping (Result<Data, ApiError>) -> Void) -> URLSessionDataTask
+ 
     
 }
 
 
-final class NetworkManager: NetworkServiceProtocol {
-   
-
-    static let  shared = NetworkManager()
+final class NetworkManagerImpl: NetworkManager {
+  
+    @Service private var urlSession: URLSession
     
-    private init(){}
     
-    func createElectricity<T: Codable>(body: T) async throws where T : Decodable, T : Encodable {
-        guard let encoded = try? JSONEncoder().encode(body) else {
-            print("Failed to encode order")
-            return
+    func postData(from url: URLRequest, completion: @escaping (Result<Data, ApiError>) -> Void) -> URLSessionDataTask {
+        let task = urlSession.dataTask(with: url) { (data, response, error) in
+            if let _ = error {
+                completion(.failure(.unknown))
+                return
+            }
+            guard  let httpRes = response as? HTTPURLResponse,
+                   (200..<300).contains(httpRes.statusCode) else {
+                let statusCode = (response as? HTTPURLResponse)?.statusCode
+                completion(.failure(.errorCode(statusCode ?? 0)))
+                return
+            }
+            guard let data = data else {
+                let _ = NSError(domain: "com.example.app", code: 0, userInfo: [NSLocalizedDescriptionKey: "Invalid data"])
+                completion(.failure(.DecodingError))
+            
+                return
+            }
+            
+            completion(.success(data))
         }
         
-        let task = URLSession.shared.dataTask(with: .urlRequest(HTTPMethod.post, data: encoded)) { (data, response, error) in
-            
-            print(data ?? "David")
-        }
-        task.resume()
+        return task
+
     }
- 
+    
+    
+
     
     func postElect<T>(body: T, completion: @escaping (Result<Data?, ApiError>) -> Void) where T : Decodable, T : Encodable {
         guard let encoded = try? JSONEncoder().encode(body) else {
@@ -42,16 +56,14 @@ final class NetworkManager: NetworkServiceProtocol {
             return
         }
         
-        let task = URLSession.shared.dataTask(with: .urlRequest(HTTPMethod.post, data: encoded)) { (data, response, error) in
+        let _ = URLSession.shared.dataTask(with: .urlRequest(HTTPMethod.post, data: encoded)) { (data, response, error) in
             guard  let httpRes = response as? HTTPURLResponse,
                    (200..<300).contains(httpRes.statusCode) else {
                 let statusCode = (response as? HTTPURLResponse)?.statusCode
                 completion(.failure(.errorCode(statusCode ?? 0)))
                 return
             }
-            print(data ?? "David")
         }
-        task.resume()
     }
     
     func getElectricity(){
@@ -61,11 +73,9 @@ final class NetworkManager: NetworkServiceProtocol {
             return
         }
         
-        let task = URLSession.shared.dataTask(with: .urlRequest(HTTPMethod.post, data: encoded)) { (data, response, error) in
-            
-            print(data ?? "David")
+        let _ = URLSession.shared.dataTask(with: .urlRequest(HTTPMethod.post, data: encoded)) { (data, response, error) in
         }
-        task.resume()
+
         
     }
     
@@ -115,10 +125,17 @@ enum ApiError : Error {
               return "Bad gateway";
             case 504:
               return "Service unavaiilable. Please try again later";
+          case 422:
+            return "An error occurred .. Please try again";
             default:
               return "Oops something went wrong";
           }
         }
     }
+
+
+
+
+
 
 

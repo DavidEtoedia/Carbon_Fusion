@@ -91,8 +91,8 @@ struct flight_screen: View {
             Button {
                 
             } label: {
-                Text("Energy")
-                    .font(.custom(Font.climateCrisis, size: 15))
+                Text("Calculate")
+                    .font(.system(size: 20))
                     .foregroundColor(.white)
                     .padding(.horizontal, 70)
                     .padding(.vertical, 10)

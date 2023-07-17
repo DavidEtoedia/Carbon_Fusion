@@ -1,13 +1,13 @@
 //
-//  energy_screen.swift
+//  vehicle_screen.swift
 //  Carbon_Fusion
 //
-//  Created by Inyene Etoedia on 18/06/2023.
+//  Created by Inyene Etoedia on 25/06/2023.
 //
 
 import SwiftUI
 
-struct energy_screen: View {
+struct vehicle_screen: View {
     private let outerDialSize: CGFloat = 200
     private let innerDialSize: CGFloat = 190
     private let minTemperature: CGFloat = 4
@@ -16,8 +16,8 @@ struct energy_screen: View {
     @State private var degrees: CGFloat = 36
     @State private var showStatus = false
     // PICKer
-    @State private var selectedOption = "mwh"
-    private let options = ["mwh", "kwh"]
+    @State private var selectedOption = "mi"
+    private let options = ["mi", "km"]
     var degree: CGFloat = 34
     var ringValue: CGFloat {
         currentTemperature / 50
@@ -25,18 +25,18 @@ struct energy_screen: View {
     var body: some View {
         VStack {
             Space(height: 10)
-            Text("Electricity Consumption")
+            Text("Vehicle CO2 Estimates")
                 .font(.custom(Font.climateCrisis, size: 33))
                 .foregroundColor(.white)
             Space(height: 40)
-            Text(energy)
+            Text(vehicle)
                 .font(.system(size: 15))
                 .multilineTextAlignment(.center)
                 .foregroundColor(.white)
                 .padding(.horizontal,40)
             Space(height: 50)
             ZStack {
-                Image("light")
+                Image("car")
                     .resizable()
                     .scaledToFit()
                     .padding(5)
@@ -86,13 +86,22 @@ struct energy_screen: View {
                 }
                 .pickerStyle(.menu)
             }
-         
+            
+            
+            Picker( "value", selection: $selectedOption) {
+                ForEach(options, id: \.self) { value in
+                    Text(value)
+                        .foregroundColor(.white)
+                }
+            }
+          
+          Space(height: 40)
 
             Button {
                 
             } label: {
-                Text("Energy")
-                    .font(.custom(Font.climateCrisis, size: 15))
+                Text("Calculate")
+                    .font(.system(size: 20))
                     .foregroundColor(.white)
                     .padding(.horizontal, 70)
                     .padding(.vertical, 10)
@@ -105,13 +114,11 @@ struct energy_screen: View {
         .frame(maxWidth: .infinity,maxHeight: .infinity, alignment: .top)
         .background(.black)
         .edgesIgnoringSafeArea(.bottom)
-      
-    
     }
 }
 
-struct energy_screen_Previews: PreviewProvider {
+struct vehicle_screen_Previews: PreviewProvider {
     static var previews: some View {
-        energy_screen()
+        vehicle_screen()
     }
 }
