@@ -11,42 +11,87 @@ import Foundation
 protocol HttpRepository {
     
     func postCal<T: Codable> (body: T, completion: @escaping (Result<ElectricityResponse, ApiError>) -> Void)
+    func postVehicle<T: Codable> (body: T, completion: @escaping (Result<VehicleResponse, ApiError>) -> Void)
+    func createFlight<T: Codable> (body: T, completion: @escaping (Result<FlightResponseModel, ApiError>) -> Void)
+    func getVehicle(completion: @escaping (Result<[VehicleResponse], ApiError>) -> Void)
     
 }
 
 
 final class HttpRepositoryImp : HttpRepository {
+    @Service  private var networkService: NetworkServiceManager
     
-    @Service private var networkManager: NetworkManager
-    
+    //MARK: Post Energy request
     
     func postCal<T>(body: T, completion: @escaping (Result<ElectricityResponse, ApiError>) -> Void) where T : Decodable, T : Encodable {
         
         guard let encoded =  try? JsonMapper.encode(body) else {
-            print("Failed to encode order")
+            completion(.failure(.EncodingError))
             return
         }
-        let task =  networkManager.postData(from: .urlRequest(HTTPMethod.post, data: encoded)) { (result) in
-            
+        networkService.request(method: .post, path: .estimate, body: encoded) {  (result: Result<ElectricityResponse, ApiError>) in
             switch result {
-            case .success(let data):
-                do {
-                    let decoder = JSONDecoder()
-                    let decodedData = try decoder.decode(ElectricityResponse.self, from: data)
-                    completion(.success(decodedData))
-                } catch {
-                    completion(.failure(.DecodingError))
-                }
-            case .failure(let error):
-                completion(.failure(error))
+            case .success(let res):
+                completion(.success(res))
+            case .failure(let err):
+                completion(.failure(err))
             }
         }
-        
-         task.resume()
-        
-        
+    }
+    //
+    //MARK: Post vehicle request
+    //
+    
+    func postVehicle<T>(body: T, completion: @escaping (Result<VehicleResponse, ApiError>) -> Void) where T : Decodable, T : Encodable {
+        guard let encoded =  try? JsonMapper.encode(body) else {
+            completion(.failure(.EncodingError))
+            return
+        }
+        networkService.request(method: .post, path: .estimate, body: encoded) {  (result: Result<VehicleResponse, ApiError>) in
+            switch result {
+            case .success(let res):
+                completion(.success(res))
+            case .failure(let err):
+                completion(.failure(err))
+            }
+            
+            
+        }
+    }
+    
+    
+    func getVehicle(completion: @escaping (Result<[VehicleResponse], ApiError>) -> Void) {
+        networkService.request(method: .get, path: .createVehicle, body: nil) { (result: Result<[VehicleResponse], ApiError>) in
+            switch result {
+            case .success(let res):
+                completion(.success(res))
+            case .failure(let err):
+                completion(.failure(err))
+            }
+        }
+    }
+    
+    
+    func createFlight<T>(body: T, completion: @escaping (Result<FlightResponseModel, ApiError>) -> Void) where T : Decodable, T : Encodable {
+        guard let encoded =  try? JsonMapper.encode(body) else {
+            completion(.failure(.EncodingError))
+            return
+        }
+        networkService.request(method: .post, path: .estimate, body: encoded) { (result: Result<FlightResponseModel, ApiError>) in
+            switch result{
+            case .success(let res):
+                completion(.success(res))
+            case .failure(let err):
+                completion(.failure(err))
+            }
+            
+        }
     }
     
     
 }
+    
+    
+    
+
 

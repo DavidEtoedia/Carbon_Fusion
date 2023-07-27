@@ -15,9 +15,10 @@ struct vehicle_screen: View {
     @State private var currentTemperature: CGFloat = 50
     @State private var degrees: CGFloat = 36
     @State private var showStatus = false
-    // PICKer
+    // State
     @State private var selectedOption = "mi"
-    private let options = ["mi", "km"]
+    @State  private var inputValue: String = ""
+    @State  private var vehicles: String = "Select Vehicle"
     var degree: CGFloat = 34
     var ringValue: CGFloat {
         currentTemperature / 50
@@ -71,30 +72,76 @@ struct vehicle_screen: View {
             }
             
           
-            HStack {
-                TextField("Enter value", text: $number)
+            VStack {
+                HStack {
+                    VStack(alignment:.leading) {
+                        Text("Enter distance")
+                            .font(.system(size: 13))
+                            .foregroundColor(.gray.opacity(0.8))
+                        ZStack {
+                            TextField("", value: $inputValue, formatter: NumberFormatter())
                                 .textFieldStyle(RoundedBorderTextFieldStyle())
                                 .keyboardType(.numberPad)
                                 .textContentType(.telephoneNumber)
-                            .padding()
-                            .frame(width: 150)
-                Picker( "value", selection: $selectedOption) {
-                    ForEach(options, id: \.self) { value in
-                        Text(value)
-                            .foregroundColor(.white)
+                                .onReceive(inputValue.publisher.collect()) {
+                                    self.inputValue = String($0.prefix(5))
+                              }
+                                .padding(.trailing,5)
+                                .frame(width: 120)
+                                .toolbar {
+                                    ToolbarItemGroup(placement: .keyboard) {
+                                        Spacer()
+                                        Button("Done") {
+                                            KeyboardHelper.closeKeyboard()
+                                        }
+                                    }
+                                }
+                            .ignoresSafeArea(.keyboard, edges: .bottom)
+                            
+                            HStack {
+                                Space(width: 80)
+                                Text("mi")
+                                    .font(.system(size: 13))
+                                    .foregroundColor(.gray)
+                            }
+                            .padding(.trailing, 8) // Adjust the padding as needed
+                        }
                     }
+
+                    
+                    VStack(alignment:.leading){
+                        Text("Select vehicle")
+                            .font(.system(size: 13))
+                            .foregroundColor(.gray.opacity(0.8))
+                        Rectangle()
+                            .foregroundColor(.white)
+                            .frame(width:130, height: 33)
+                            .cornerRadius(5)
+                            .overlay {
+                                HStack  {
+                                    Text(vehicles)
+                                        .font(.system(size: 13))
+                                        .foregroundColor(.black.opacity(0.4))
+                                  
+                                    
+                                    Image(systemName:"chevron.down")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 10)
+                                        .frame(width: 10)
+                                        .foregroundColor(Color.blue)
+                                    
+                                }
+                                .padding([.leading, .trailing], 5)
+                                
+                            }
+                    }
+                      
                 }
-                .pickerStyle(.menu)
+                .ignoresSafeArea(.keyboard, edges: .bottom)
             }
             
-            
-            Picker( "value", selection: $selectedOption) {
-                ForEach(options, id: \.self) { value in
-                    Text(value)
-                        .foregroundColor(.white)
-                }
-            }
-          
+     
           Space(height: 40)
 
             Button {

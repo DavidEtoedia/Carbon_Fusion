@@ -22,7 +22,7 @@ class EnergyViewModel : ObservableObject {
     
     func calEnergy(value: Int, state: String) {
         self.result = .loading
-    let req = ElectricityReq(type: "electricity", electricityUnit: "kwh", electricityValue: value, country: "uk", state: state)
+    let req = ElectricityReq(type: "electricity", electricityUnit: "kwh", electricityValue: value, country: "us", state: state)
        // defer { self.result = .idle }
         if((value == .zero) || (state.isEmpty)){
             return

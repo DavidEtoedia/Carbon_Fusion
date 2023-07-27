@@ -20,6 +20,8 @@ struct Space: View {
 
 struct ContentView: View {
     @EnvironmentObject private var energyVm: EnergyViewModel
+    @EnvironmentObject private var flightVm: FlightViewModel
+
     @State private var path = NavigationPath()
     private let outerDialSize: CGFloat = 200
     private let innerDialSize: CGFloat = 172
@@ -146,12 +148,12 @@ struct ContentView: View {
                     .font(.system(size:25))
                     .foregroundColor(.white)
                 Space(height: 20)
-              // MARK: Containers ---------->
+              // MARK: Containers -------------->
                
                 NavigationLink {
                     energy_screen()
                 } label: {
-                    CarbonCard(name: "Energy", date: energyVm.result.value?.datum?.attributes?.estimated_at?.formatDate ?? "", value:String(  energyVm.result.value?.datum?.attributes?.carbon_kg ?? 0.0), image: "light")
+                    CarbonCard(name: "Energy", date: energyVm.result.value?.datum?.attributes?.estimated_at?.formatDate ?? "", value:String(  energyVm.result.value?.datum?.attributes?.carbon_kg?.rounded(toDecimalPlaces: 1) ?? 0.0), image: "light")
                 }
                 .accentColor(.clear)
            
@@ -165,7 +167,7 @@ struct ContentView: View {
                 NavigationLink {
                     flight_screen()
                 } label: {
-                    CarbonCard(name: "Flights", date: "07:10 AM - 13:30 PM", value: "49", image: "plane")
+                    CarbonCard(name: "Flights", date: flightVm.result.value?.data?.attributes?.estimated_at?.formatDate ?? "", value: String(  flightVm.result.value?.data?.attributes?.carbon_mt?.rounded(toDecimalPlaces: 1) ?? 0.0), image: "plane")
                 }
                 .accentColor(.clear) // Set the accent color to clear
                     
@@ -175,7 +177,9 @@ struct ContentView: View {
             .padding(.horizontal, 25)
             .background(.black)
         .edgesIgnoringSafeArea(.bottom)
+       
         }
+        
     }
     
     
@@ -221,10 +225,16 @@ struct ContentView: View {
                         }
                     }
                     Spacer()
-                    Text(value)
-                        .font(.custom(Font.climateCrisis, size: 40))
-                        .foregroundColor(.white)
+                    HStack {
+                        Text(value)
+                            .font(.custom(Font.climateCrisis, size: 40))
+                            .foregroundColor(.white)
                         .shadow(color: .black.opacity(0.1), radius: 20)
+                        Text("mt")
+                            .font(.custom(Font.climateCrisis, size: 15))
+                            .foregroundColor(.white)
+                        .shadow(color: .black.opacity(0.1), radius: 20)
+                    }
                 }
                 .frame(maxWidth: .infinity, alignment:  .leading)
                 .padding(.leading, 20)
@@ -239,5 +249,6 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
             .environmentObject(EnergyViewModel())
+            .environmentObject(FlightViewModel())
     }
 }

@@ -10,10 +10,14 @@ import Foundation
 
 enum Endpoint: CustomStringConvertible {
     case createElectricity
+    case baseurl
+ 
     var description: String {
         switch self {
         case .createElectricity:
-            return "https://www.carboninterface.com/api/v1/estimates"
+            return "estimates"
+        case .baseurl:
+            return "https://www.carboninterface.com/api/v1/"
         }
     }
 }

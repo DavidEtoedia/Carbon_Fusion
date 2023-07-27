@@ -77,12 +77,12 @@ struct Datum : Codable {
         case attributes = "attributes"
     }
 
-    init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
-        id = try values.decodeIfPresent(String.self, forKey: .id)
-        type = try values.decodeIfPresent(String.self, forKey: .type)
-        attributes = try values.decodeIfPresent(Attributes.self, forKey: .attributes)
-    }
+//    init(from decoder: Decoder) throws {
+//        let values = try decoder.container(keyedBy: CodingKeys.self)
+//        id = try values.decodeIfPresent(String.self, forKey: .id)
+//        type = try values.decodeIfPresent(String.self, forKey: .type)
+//        attributes = try values.decodeIfPresent(Attributes.self, forKey: .attributes)
+//    }
 
 }
 
@@ -111,17 +111,17 @@ struct Attributes : Codable {
         case carbon_mt = "carbon_mt"
     }
 
-    init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
-        country = try values.decodeIfPresent(String.self, forKey: .country)
-        state = try values.decodeIfPresent(String.self, forKey: .state)
-        electricity_unit = try values.decodeIfPresent(String.self, forKey: .electricity_unit)
-        electricity_value = try values.decodeIfPresent(Double.self, forKey: .electricity_value)
-        estimated_at = try values.decodeIfPresent(String.self, forKey: .estimated_at)
-        carbon_g = try values.decodeIfPresent(Int.self, forKey: .carbon_g)
-        carbon_lb = try values.decodeIfPresent(Double.self, forKey: .carbon_lb)
-        carbon_kg = try values.decodeIfPresent(Double.self, forKey: .carbon_kg)
-        carbon_mt = try values.decodeIfPresent(Double.self, forKey: .carbon_mt)
-    }
+//    init(from decoder: Decoder) throws {
+//        let values = try decoder.container(keyedBy: CodingKeys.self)
+//        country = try values.decodeIfPresent(String.self, forKey: .country)
+//        state = try values.decodeIfPresent(String.self, forKey: .state)
+//        electricity_unit = try values.decodeIfPresent(String.self, forKey: .electricity_unit)
+//        electricity_value = try values.decodeIfPresent(Double.self, forKey: .electricity_value)
+//        estimated_at = try values.decodeIfPresent(String.self, forKey: .estimated_at)
+//        carbon_g = try values.decodeIfPresent(Int.self, forKey: .carbon_g)
+//        carbon_lb = try values.decodeIfPresent(Double.self, forKey: .carbon_lb)
+//        carbon_kg = try values.decodeIfPresent(Double.self, forKey: .carbon_kg)
+//        carbon_mt = try values.decodeIfPresent(Double.self, forKey: .carbon_mt)
+//    }
 
 }
