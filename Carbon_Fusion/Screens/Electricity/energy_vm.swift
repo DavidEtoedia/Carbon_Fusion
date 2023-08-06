@@ -9,15 +9,19 @@ import Foundation
 
 
 class EnergyViewModel : ObservableObject {
-    @Published var result: ResultState<ElectricityResponse, String> = .idle
     @Service private var repository : HttpRepository
+    @Service  private var supaBaseRepo: SupaBaseRepository
+    @Published var data: ResultState<DataModel, String> = .idle
+    @Published var result: ResultState<ElectricityResponse, String> = .idle
     @Published var carbonVal : Double = 0.0
     @Published var electricity = ElectricityResponse()
+    
     @Published var hasError : Bool = false
     
     
     
     init() {
+        self.getEnergy()
     }
     
     func calEnergy(value: Int, state: String) {
@@ -27,12 +31,12 @@ class EnergyViewModel : ObservableObject {
         if((value == .zero) || (state.isEmpty)){
             return
         } else{
-            repository.postCal(body: req) { result in
+            repository.createEnergy(body: req) { result in
                 switch result {
                 case .success(let res):
                     self.electricity = res
                     self.result = .success(res)
-                    print(res)
+                    self.getEnergy()
                 case .failure(let err):
                     print("printed \(err.localizedDescription)")
                     self.hasError = true
@@ -43,6 +47,27 @@ class EnergyViewModel : ObservableObject {
         }
 
     }
+    
+    
+    func getEnergy(){
+        self.data = .loading
+        Task{
+            do {
+                let result = try  await supaBaseRepo.getRequest(table: "Carbon")
+                let res = result?.filter{$0.name == "Energy"}.last
+                self.data = .success(res ?? DataModel(carbonKg: 0.0, createdAt: "", name: ""))
+                hasError = false
+            }
+            catch{
+                self.result = .idle
+                hasError = true
+                self.result = .failure(error.localizedDescription)
+            }
+        }
+     
+    }
+    
+    
     
     private func roundedValue() -> Decimal {
         return Decimal(ceil(carbonVal))

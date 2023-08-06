@@ -42,7 +42,6 @@ final class NetworkService: NetworkServiceManager {
             request.setValue(value, forHTTPHeaderField: key)      }
         */
         
-        
         session.dataTask(with: request) { data, response, error in
             
             //MARK: Check for error
@@ -50,7 +49,7 @@ final class NetworkService: NetworkServiceManager {
                 completion(.failure(.unknown))
                 return
             }
-            
+                        
             //MARK: Check for http response error
             
             guard  let httpRes = response as? HTTPURLResponse,
