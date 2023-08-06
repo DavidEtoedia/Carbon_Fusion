@@ -17,8 +17,9 @@ struct Carbon_FusionApp: App {
         WindowGroup {
             ContentView()
                 .environmentObject(EnergyViewModel())
-                .environmentObject(VehicleViewModel())
+                .environmentObject(ShipViewModel())
                 .environmentObject(FlightViewModel())
+                .environmentObject(SupbaseViewModel())
                 
         }
     }
@@ -31,11 +32,12 @@ private extension Carbon_FusionApp {
         // Services
         ServiceContainer.register(type: URLSession.self, .shared)
        // ServiceContainer.register(type: UserDefaults.self, .standard)
-        ServiceContainer.register(type: NetworkManager.self, NetworkManagerImpl())
         ServiceContainer.register(type: NetworkServiceManager.self, NetworkService())
+        ServiceContainer.register(type: SupaBaseManager.self, SupaBaseService())
         
         // Repositories
         ServiceContainer.register(type: HttpRepository.self, HttpRepositoryImp())
+        ServiceContainer.register(type: SupaBaseRepository.self, SupaBaseRepoImpl())
     
     }
 }

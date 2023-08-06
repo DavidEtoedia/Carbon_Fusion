@@ -65,6 +65,7 @@ struct energy_screen: View {
                     }
                     .ignoresSafeArea(.keyboard, edges: .bottom)
                     Space(height: 20)
+            
                     Rectangle()
                         .foregroundColor(.white)
                         .frame(width:180, height: 35)
@@ -90,7 +91,6 @@ struct energy_screen: View {
                             SheetView(isSheetPresent: $isSheetPresented, selectedState: $selectedValue)
                         }
                 }
-              
                 
                Spacer()
                     .frame(height: 50)
@@ -120,6 +120,8 @@ struct energy_screen: View {
             }, message: {
                 Text(energyVm.result.error ?? "")
             })
+            
+            Spacer()
         
         }
         .background(.black)

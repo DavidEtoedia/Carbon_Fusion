@@ -1,0 +1,7 @@
+
+# flow.yaml
+​
+appId: com.david.Carbon-Fusion
+---
+- launchApp
+- tapOn: "Text on the screen"

@@ -22,7 +22,9 @@ extension Double{
 
 extension String {
     var formatDate : String {
-    
+        if(self.isEmpty){
+            return ""
+        }
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ" // Specify the input format
         
