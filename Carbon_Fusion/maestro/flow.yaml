@@ -4,4 +4,5 @@
 appId: com.david.Carbon-Fusion
 ---
 - launchApp
-- tapOn: "Text on the screen"
+- tapOn:
+    point: "50%,64%"

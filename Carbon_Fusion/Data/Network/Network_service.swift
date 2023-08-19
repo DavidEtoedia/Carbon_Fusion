@@ -10,6 +10,7 @@ import Foundation
 
 protocol NetworkServiceManager {
     func request<T: Codable>(
+        session: URLSession,
          method: HttpMethod,
          path: Path,
          body: Data?,
@@ -19,18 +20,18 @@ protocol NetworkServiceManager {
 
 
 final class NetworkService: NetworkServiceManager {
-    func request<T>(method: HttpMethod, path: Path, body: Data?, completion: @escaping (Result<T, ApiError>) -> Void) where T : Decodable, T : Encodable {
+    func request<T>(session: URLSession = .customSession ,method: HttpMethod, path: Path, body: Data?, completion: @escaping (Result<T, ApiError>) -> Void) where T : Decodable, T : Encodable {
         var request = URLRequest(url: uRLComponents(path: path)!)
         request.httpMethod = method.rawValue
         request.httpBody = body
         
         // URL Session config
-        let configuration = URLSessionConfiguration.default
-        configuration.waitsForConnectivity = true
-        configuration.timeoutIntervalForRequest = 60 // seconds that a task will wait for data to arrive
-        configuration.timeoutIntervalForResource = 300
+//        let configuration = URLSessionConfiguration.default
+//        configuration.waitsForConnectivity = true
+//        configuration.timeoutIntervalForRequest = 60
+//        configuration.timeoutIntervalForResource = 300
         
-        let session = URLSession(configuration: configuration)
+        //let session = URLSession(configuration: configuration)
         
         // Headers
         request.setValue("Bearer \(ApiKey.apiKey.description)", forHTTPHeaderField: "Authorization")
@@ -84,10 +85,23 @@ final class NetworkService: NetworkServiceManager {
         urlComponents.scheme = "https"
         urlComponents.host = "www.carboninterface.com"
         urlComponents.path = "/api/v1\(path.rawValue)"
-       // urlComponents.percentEncodedQuery = "Authorization=Bearer\(ApiKey.apiKey.description)"
         
         return urlComponents.url
     }
     
 
 }
+
+extension URLSession {
+     static var  customSession: URLSession {
+        let configuration = URLSessionConfiguration.default
+        configuration.waitsForConnectivity = true
+        configuration.timeoutIntervalForRequest = 60
+        configuration.timeoutIntervalForResource = 300
+        
+        return URLSession(configuration: configuration)
+    }
+}
+
+
+

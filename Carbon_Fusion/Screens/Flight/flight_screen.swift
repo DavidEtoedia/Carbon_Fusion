@@ -37,15 +37,16 @@ struct flight_screen: View {
                       
                     CircleView(
                         carbonValue: String(
-                            flightVm.result.value?.data?.attributes?.carbon_mt?.rounded(toDecimalPlaces: 1) ?? Double(0.0)
-                        ), isLoading: flightVm.result.isLoading)
+                            flightVm.data.value?.carbonKg.rounded(toDecimalPlaces: 1) ?? Double(0.0)
+                        ), isLoading: flightVm.data.isLoading)
                         
                         VStack {
                             Text("Enter passengers")
                                 .font(.system(size: 13))
                                 .foregroundColor(.gray.opacity(0.8))
                             
-                            TextField("passengers", value: $passenger, formatter: NumberFormatter())
+                            TextField("passengers", value: $passenger,
+                                      formatter: NumberFormatter())
                                 .font(.system(size: 14))
                                 .textFieldStyle(RoundedBorderTextFieldStyle())
                                 .keyboardType(.numberPad)
@@ -61,6 +62,7 @@ struct flight_screen: View {
                                         }
                                     }
                                 }
+                                .accessibilityIdentifier("Enter passenger")
                             
                        
                             Space(height: 20)
@@ -77,16 +79,16 @@ struct flight_screen: View {
                                             HStack  {
                                                 if(selectedDeparture.name.isEmpty){
                                                     Text(initial)
-                                                        .font(.system(size: 13))
+                                                        .font(.system(size: 14))
                                                         .lineLimit(1)
                                                         .truncationMode(.tail)
                                                         .foregroundColor(.black.opacity(0.4))
                                                 } else {
                                                     Text(selectedDeparture.name)
-                                                        .font(.system(size: 13))
+                                                        .font(.system(size: 14))
                                                         .lineLimit(1)
                                                         .truncationMode(.tail)
-                                                        .foregroundColor(.black.opacity(0.4))
+                                                        .foregroundColor(.black)
                                                 }
                                               
                                               
@@ -108,6 +110,8 @@ struct flight_screen: View {
                                         .sheet(isPresented: $isDepartureSheet) {
                                             DepartureSheet(isSheetPresent: $isDepartureSheet, selectedCode: $selectedDeparture)
                                         }
+                                        .accessibilityIdentifier("Departure")
+
                                     
                                 }
 
@@ -124,16 +128,16 @@ struct flight_screen: View {
                                             HStack  {
                                                 if(selectedDestination.name.isEmpty){
                                                     Text(initial)
-                                                        .font(.system(size: 13))
+                                                        .font(.system(size: 14))
                                                         .lineLimit(1)
                                                         .truncationMode(.tail)
                                                         .foregroundColor(.black.opacity(0.4))
                                                 } else {
                                                     Text(selectedDestination.name)
-                                                        .font(.system(size: 13))
+                                                        .font(.system(size: 14))
                                                         .lineLimit(1)
                                                         .truncationMode(.tail)
-                                                        .foregroundColor(.black.opacity(0.4))
+                                                        .foregroundColor(.black)
                                                 }
                                                 
                                                 Spacer()
@@ -154,6 +158,7 @@ struct flight_screen: View {
                                         .sheet(isPresented: $isDestinationSheet) {
                                             DestinationSheet(isSheetPresent: $isDestinationSheet, selectedCode: $selectedDestination)
                                         }
+                                        .accessibilityIdentifier("Destination")
                                 }
                                   
                             }
@@ -168,6 +173,7 @@ struct flight_screen: View {
                                     
                                     flightVm.createFlight(passengers: passenger, legs: listState)
                                 }
+                                .accessibilityIdentifier("calculate")
                          
 
                         }
@@ -184,7 +190,7 @@ struct flight_screen: View {
                             
                         }
                     }, message: {
-                        Text(flightVm.result.error ?? "")
+                        Text(flightVm.data.error ?? "")
                     })
               
                     Spacer()

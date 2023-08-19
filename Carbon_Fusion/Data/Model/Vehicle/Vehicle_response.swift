@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct VehicleResponse: Codable {
+struct VehicleResponse: Codable, Equatable {
     var vehicleData: VehicleData?
     
     enum CodingKeys: String, CodingKey {
@@ -16,7 +16,7 @@ struct VehicleResponse: Codable {
     }
 }
 
-struct VehicleData: Codable {
+struct VehicleData: Codable, Equatable {
     let id : String
     let type: String
     let attributes: VehicleAttributes
@@ -29,7 +29,7 @@ struct VehicleData: Codable {
 }
 
 
-struct VehicleAttributes: Codable {
+struct VehicleAttributes: Codable, Equatable {
     let distanceValue: Double?
     let vehicleModel: String?
     let vehicleMake: String?

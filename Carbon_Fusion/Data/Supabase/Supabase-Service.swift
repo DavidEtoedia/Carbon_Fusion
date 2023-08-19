@@ -12,6 +12,7 @@ import Supabase
 
 protocol SupaBaseManager {
     func  request<T: Decodable>(reqBody: Encodable, table: String) async throws -> T
+    func  delete(id: String) async throws -> Void
     func  getRequest<T: Decodable>(table: String) async throws -> T
     func realTimeReq() -> Channel
 }
@@ -19,14 +20,13 @@ protocol SupaBaseManager {
 
 final class SupaBaseService: SupaBaseManager {
 
-    
     private var client = SupabaseClient(supabaseURL: .supaBaseUrl(), supabaseKey: apiKey)
     var realtimeClient = RealtimeClient(endPoint: "https://dzdaoqpmncbxxnbotvmz.supabase.co/realtime/v1", params: ["apikey": apiKey])
  
     
     init() {
 //        print("connect to Supabase realtime")
-        realtimeClient.connect()
+     realtimeClient.connect()
     }
 
     func request<T>(reqBody: Encodable, table: String) async throws -> T where T : Decodable{
@@ -43,15 +43,26 @@ final class SupaBaseService: SupaBaseManager {
         }
     }
     
+    func delete(id: String) async throws  {
+        do {
+            try await client.database.from("Carbon").delete().eq(column: "id", value: id).execute()
+           
+        }
+        catch {
+            print(error.localizedDescription)
+            throw error
+        }
+    }
+    
  
     func getRequest<T>(table: String) async throws -> T where T : Decodable {
         do{
-            let res = try await client.database.from(table).execute().underlyingResponse.data
+            let res = try await client.database.from(table).select().order(column: "created_at", ascending: false).execute().underlyingResponse.data
             let decoder = JSONDecoder()
             guard let decodedData = try? decoder.decode(T.self, from: res) else {
                 return T.self as! T
             }
-            
+           
             return decodedData
         }
         catch {
@@ -67,17 +78,12 @@ final class SupaBaseService: SupaBaseManager {
     
     func req(){
         let userChanges = realtimeClient.channel(.table("Carbon", schema: "public"))
-        userChanges.on(.insert) { message in
+        userChanges.on(.all) { message in
             print(message.payload)
         }
         userChanges.subscribe()
     }
-    
-    
-    
-    
-    
-    
+ 
 }
 
 
@@ -85,12 +91,14 @@ final class SupaBaseService: SupaBaseManager {
 
 protocol SupaBaseRepository {
     func saveCarbonFt(req: DataModel, table: String)  -> Void
+    func delete(id: String) async throws -> Void
     func getRequest(table: String) async throws -> [DataModel]?
     func realTime() -> Realtime.Channel
 }
 
 class SupaBaseRepoImpl: SupaBaseRepository  {
-
+ 
+  
     @Service  private var supaBaseService: SupaBaseManager
     
     func saveCarbonFt(req: DataModel, table: String)  -> Void {
@@ -101,10 +109,19 @@ class SupaBaseRepoImpl: SupaBaseRepository  {
                 print("AN Error occured\(String(describing: res?.carbonKg))")
                 return
             }
-            
         }
     }
-
+    
+    
+    func delete(id: String) async throws {
+        do {
+            try await supaBaseService.delete(id: id)
+        }
+        catch {
+            throw error
+        }
+    }
+    
     
     func getRequest(table: String) async throws -> [DataModel]? {
         do{

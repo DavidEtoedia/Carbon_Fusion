@@ -37,6 +37,36 @@ extension String {
     }
 }
 
+extension String {
+    var formattedMonth : String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss.SSS"
+        
+        if let date = dateFormatter.date(from: self) {
+            dateFormatter.dateFormat = "MMMM"
+            return dateFormatter.string(from: date)
+        } else {
+            return "Invalid Date"
+        }
+    }
+}
+
+extension String {
+    var formattedDate :  String {
+        let inputDateFormatter = DateFormatter()
+        inputDateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS"
+        if let date = inputDateFormatter.date(from: self) {
+            let outputDateFormatter = DateFormatter()
+            outputDateFormatter.dateFormat = "dd MMMM yyyy, hh:mma"
+            return outputDateFormatter.string(from: date)
+        }
+        
+        return self
+    }
+}
+
+
+
 
 func convertDateFormat(inputDate: String) -> String {
 

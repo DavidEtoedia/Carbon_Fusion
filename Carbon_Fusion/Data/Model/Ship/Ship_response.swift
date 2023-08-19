@@ -7,59 +7,10 @@
 
 import Foundation
 
-//struct ShipResponseModel: Codable {
-//    let data :  ShipResponse
-//
-//    enum CodingKeys: String, CodingKey{
-//        case data = "data"
-//    }
-//}
-//
-//
-//struct ShipResponse: Codable {
-//    let id: String
-//    let type: String
-//    let attributes: ShipAttributes
-//
-//    enum CodingKeys: String, CodingKey {
-//        case id = "id"
-//        case type = "type"
-//        case attributes = "attributes"
-//    }
-//}
-//
-//
-//struct ShipAttributes: Codable {
-//    let distanceValue: String
-//    let distanceUnit: String
-//    let weightValue: String
-//    let weightUnit: String
-//    let transportMethod: String
-//    let estimatedAt: String
-//    let carbonG: Int
-//    let carbonLb: Double
-//    let carbonKg: Double
-//    let carbonMt: Double
-//
-//    enum CodingKeys: String, CodingKey {
-//        case distanceValue = "distance_value"
-//        case distanceUnit = "distance_unit"
-//        case weightValue = "weight_value"
-//        case weightUnit = "weight_unit"
-//        case transportMethod = "truck"
-//        case estimatedAt = "estimated_at"
-//        case carbonG = "carbon_g"
-//        case carbonLb = "carbon_lb"
-//        case carbonKg = "carbon_kg"
-//        case carbonMt = "carbon_mt"
-//    }
-//
-//
-//}
 
 
 // MARK: - ShipResponseModel
-struct ShipResponseModel: Codable {
+struct ShipResponseModel: Codable, Equatable {
     let data: ShipResponse?
     
     enum CodingKeys: String, CodingKey {
@@ -70,7 +21,7 @@ struct ShipResponseModel: Codable {
 }
 
 // MARK: - DataClass
-struct ShipResponse: Codable {
+struct ShipResponse: Codable, Equatable {
     let id: String?
     let type: String?
     let attributes: ShipAttributes?
@@ -85,7 +36,7 @@ struct ShipResponse: Codable {
 }
 
 // MARK: - Attributes
-struct ShipAttributes: Codable {
+struct ShipAttributes: Codable, Equatable {
     let distance_value : Double?
     let weight_unit : String?
     let transport_method : String?

@@ -52,12 +52,28 @@ enum ApiError : Error {
             case 422:
                 return "An error occurred .. Please try again";
             case 429:
-                return "Too many request ";
+                return "Too many request";
             default:
                 return "Oops something went wrong";
             }
         }
     }
+
+extension ApiError: Equatable {
+    static func == (lhs: ApiError, rhs: ApiError) -> Bool {
+        switch (lhs, rhs) {
+        case (.DecodingError, .DecodingError),
+            (.EncodingError, .EncodingError),
+            (.URLError, .URLError),
+             (.unknown, .unknown):
+            return true
+        case let (.errorCode(code1), .errorCode(code2)):
+            return code1 == code2
+        default:
+            return false
+        }
+    }
+}
 
 
 

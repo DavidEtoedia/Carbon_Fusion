@@ -7,50 +7,8 @@
 
 import Foundation
 
-//struct ElectricityResponse: Codable {
-//    let data: DataClass
-//    enum CodingKeys: String, CodingKey {
-//        case data = "data"
-//    }
-//}
-//
-//
-//
-//// MARK: - DataClass
-//struct DataClass: Codable {
-//    let id, type: String
-//    let attributes: Attributes
-//
-//    enum CodingKeys: String, CodingKey {
-//
-//        case id = "id"
-//        case type = "type"
-//        case attributes = "attributes"
-//    }
-//}
-//
-//// MARK: - Attributes
-//struct Attributes: Codable {
-//    let country, state, electricityUnit, electricityValue: String
-//    let estimatedAt: String
-//    let carbonG, carbonLB, carbonKg, carbonMT: Int
-//
-//    enum CodingKeys: String, CodingKey {
-//        case country, state
-//        case electricityUnit = "electricity_unit"
-//        case electricityValue = "electricity_value"
-//        case estimatedAt = "estimated_at"
-//        case carbonG = "carbon_g"
-//        case carbonLB = "carbon_lb"
-//        case carbonKg = "carbon_kg"
-//        case carbonMT = "carbon_mt"
-//    }
-//}
 
-
-
-
-struct ElectricityResponse : Codable {
+struct ElectricityResponse : Codable, Equatable {
     var datum : Datum?
 
     enum CodingKeys: String, CodingKey {
@@ -58,14 +16,9 @@ struct ElectricityResponse : Codable {
         case datum = "data"
     }
 
-//    init(from decoder: Decoder) throws {
-//        let values = try decoder.container(keyedBy: CodingKeys.self)
-//        datum = try values.decodeIfPresent(Datum.self, forKey: .datum)
-//    }
-
 }
 
-struct Datum : Codable {
+struct Datum : Codable, Equatable {
     let id : String?
     let type : String?
     let attributes : Attributes?
@@ -77,17 +30,10 @@ struct Datum : Codable {
         case attributes = "attributes"
     }
 
-//    init(from decoder: Decoder) throws {
-//        let values = try decoder.container(keyedBy: CodingKeys.self)
-//        id = try values.decodeIfPresent(String.self, forKey: .id)
-//        type = try values.decodeIfPresent(String.self, forKey: .type)
-//        attributes = try values.decodeIfPresent(Attributes.self, forKey: .attributes)
-//    }
-
 }
 
 
-struct Attributes : Codable {
+struct Attributes : Codable, Equatable {
     let country : String?
     let state : String?
     let electricity_unit : String?
@@ -110,18 +56,5 @@ struct Attributes : Codable {
         case carbon_kg = "carbon_kg"
         case carbon_mt = "carbon_mt"
     }
-
-//    init(from decoder: Decoder) throws {
-//        let values = try decoder.container(keyedBy: CodingKeys.self)
-//        country = try values.decodeIfPresent(String.self, forKey: .country)
-//        state = try values.decodeIfPresent(String.self, forKey: .state)
-//        electricity_unit = try values.decodeIfPresent(String.self, forKey: .electricity_unit)
-//        electricity_value = try values.decodeIfPresent(Double.self, forKey: .electricity_value)
-//        estimated_at = try values.decodeIfPresent(String.self, forKey: .estimated_at)
-//        carbon_g = try values.decodeIfPresent(Int.self, forKey: .carbon_g)
-//        carbon_lb = try values.decodeIfPresent(Double.self, forKey: .carbon_lb)
-//        carbon_kg = try values.decodeIfPresent(Double.self, forKey: .carbon_kg)
-//        carbon_mt = try values.decodeIfPresent(Double.self, forKey: .carbon_mt)
-//    }
 
 }

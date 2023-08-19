@@ -36,8 +36,8 @@ struct energy_screen: View {
                 
                 CircleView(
                     carbonValue: String(
-                        energyVm.result.value?.datum?.attributes?.carbon_kg?.rounded(toDecimalPlaces: 1) ?? Double(0.0)
-                    ), isLoading: energyVm.result.isLoading)
+                        energyVm.data.value?.carbonKg.rounded(toDecimalPlaces: 1) ?? Double(0.0)
+                    ), isLoading: energyVm.data.isLoading)
              
                 
                 VStack(alignment:.leading){
@@ -56,6 +56,8 @@ struct energy_screen: View {
                                     }
                                 }
                             }
+                            .accessibilityIdentifier("Enter Kwh")
+
 
                             .ignoresSafeArea(.keyboard, edges: .bottom)
                         Text("kwh")
@@ -72,9 +74,16 @@ struct energy_screen: View {
                         .cornerRadius(5)
                         .overlay {
                             HStack  {
-                                Text(selectedValue?.name ?? "Select" )
-                                    .font(.system(size: 12))
-                                    .foregroundColor(.black.opacity(0.5))
+                                if(selectedValue?.name == nil){
+                                    Text("Select")
+                                        .font(.system(size: 14))
+                                        .foregroundColor(.black.opacity(0.5))
+                                } else{
+                                    Text(selectedValue!.name)
+                                        .font(.system(size: 14))
+                                        .foregroundColor(.black)
+                                }
+                             
                                 Spacer()
                                 
                                 Image(systemName:"chevron.down")
@@ -90,6 +99,7 @@ struct energy_screen: View {
                         .sheet(isPresented: $isSheetPresented) {
                             SheetView(isSheetPresent: $isSheetPresented, selectedState: $selectedValue)
                         }
+                       
                 }
                 
                Spacer()
@@ -105,6 +115,7 @@ struct energy_screen: View {
                             // closeKeyboard()
                         }
                     }
+                    .accessibilityIdentifier("calculate")
 
             }
             .padding(.horizontal, 30)
@@ -118,7 +129,7 @@ struct energy_screen: View {
                     
                 }
             }, message: {
-                Text(energyVm.result.error ?? "")
+                Text(energyVm.data.error ?? "")
             })
             
             Spacer()

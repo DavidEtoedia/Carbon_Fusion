@@ -11,7 +11,6 @@ import Foundation
 class ShipViewModel: ObservableObject {
     @Service  private var supaBaseRepo: SupaBaseRepository
     @Published var data: ResultState<DataModel, String> = .idle
-    @Published var result: ResultState<ShipResponseModel, String> = .idle
     @Service private var repository : HttpRepository
     @Published var hasError : Bool = false
     
@@ -25,21 +24,17 @@ class ShipViewModel: ObservableObject {
         if( distanceValue == .zero || weightValue == .zero){
             return
         }
-        self.result = .loading
+        self.data = .loading
         let ship = ShippingReq(type: "shipping", weightValue: weightValue, weightUnit: weightUnit, distanceValue: distanceValue, distanceUnit: distanceUnit, transportMethod: transportMethod)
         
-        repository.createShipping(body: ship) { result in
+        repository.createShipping(session: .customSession ,body: ship) { result in
             switch result {
             case .success(let res):
-                self.result = .success(res)
-                
-                self.getLogistics()
-                
-                print(res)
+                self.data = .success(DataModel(carbonKg: res.data?.attributes?.carbon_kg ?? 0.0, createdAt: res.data?.attributes?.estimated_at ?? "", name: "Logistics"))
                 self.hasError = false
             case .failure(let err):
                 self.hasError = true
-                self.result = .failure(err.errorDescription ?? "")
+                self.data = .failure(err.errorDescription ?? "")
             }
         }
     }
@@ -51,8 +46,7 @@ class ShipViewModel: ObservableObject {
             do {
                 let result = try  await supaBaseRepo.getRequest(table: "Carbon")
                 let res = result?.filter{$0.name == "Logistics"}.last
-                
-                self.data = .success(res! )
+                self.data = .success(res ?? DataModel(carbonKg: 0, createdAt: "", name: ""))
                 hasError = false
             }
             catch{

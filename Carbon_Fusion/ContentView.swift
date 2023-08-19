@@ -38,7 +38,7 @@ struct ContentView: View {
     @State private var degrees: CGFloat = 36
     @State private var showStatus = false
     @State private var units : [String] = ["Kg", "mt", "lb"]
-    @State private var selectedUnit = "mt"
+    @State private var selectedUnit = "Kg"
     //Circle Timer
     @State private var borderanim1: CGFloat = 0.0
     let timer1 = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
@@ -56,11 +56,11 @@ struct ContentView: View {
         endAngle: .degrees(0))
 
 
-    private let gradient2 = AngularGradient(
-        gradient: Gradient(colors: [Color.purple, Color.blue]),
-        center: .center,
-        startAngle: .degrees(180),
-        endAngle: .degrees(0))
+//    private let gradient2 = AngularGradient(
+//        gradient: Gradient(colors: [Color.purple, Color.blue]),
+//        center: .center,
+//        startAngle: .degrees(180),
+//        endAngle: .degrees(0))
     
     var degree: CGFloat = 0
     var ringValue: CGFloat {
@@ -77,7 +77,7 @@ struct ContentView: View {
                     Circle()
                         .foregroundColor(.white)
                         .frame(width: 30, height: 30)
-                    Text("Good morning David")
+                    Text("Hi David, you have emitted \(String( carbonFt(value: selectedUnit)))")
                         .font(.system(size:15))
                         .foregroundColor(.white)
                         .padding(.leading, 10)
@@ -87,15 +87,17 @@ struct ContentView: View {
                             Text(value).tag(value)
                         }
                     }
+                    .accessibilityIdentifier("select unit")
+                    
+                
                 }
                 .frame(maxWidth: .infinity, alignment:  .leading)
 
-                Space(height: 20)
-                ZStack {
+                ZStack(alignment:.center) {
                     ZStack{
                         Circle()
                             .stroke(Color.gray, lineWidth: 15).opacity(0.3)
-                            .frame(width: 200, height: 200, alignment: .center)
+                            .frame(width: 220, height: 220, alignment: .center)
                         
                         
                         
@@ -107,7 +109,7 @@ struct ContentView: View {
 
                             )
                             .stroke(gradient, style: StrokeStyle(lineWidth: 15, lineCap: .round))
-                            .frame(width: 200, height: 200, alignment: .center)
+                            .frame(width: 220, height: 220, alignment: .center)
                             .shadow(color: .black, radius: 5, x: 0.0, y: 0.0)
                             .rotationEffect(.degrees(180))
                         
@@ -121,7 +123,8 @@ struct ContentView: View {
                         
                         
                     }
-                    .frame(width: 300, height: 300, alignment: .center)
+                    
+                  
 //                    Circle()
 //                        .stroke(Color.gray, lineWidth: 15).opacity(0.3)
 //                        .frame(width: 200, height: 200, alignment: .center)
@@ -163,69 +166,95 @@ struct ContentView: View {
 //                            }
 //
 //                        }
-                    HStack {
-                        Text(String(  supabaseVM.carbonFTP?.rounded(toDecimalPlaces: 1) ?? 0.0))
+                    VStack(spacing:10) {
+                        Text(String( carbonFt(value: selectedUnit)))
                             .font(.custom(Font.climateCrisis, size: 40))
                         .foregroundColor(.white)
-                        ZStack {
-                            Text("mt")
+                  
+                            Text("CO2e/\(selectedUnit)")
                                 .font(.system(size:20))
                             .foregroundColor(.white)
                             .offset(y: 6)
-                        }
+                        
+                        Text("Total emission")
+                            .font(.system(size:14))
+                            .foregroundColor(.white.opacity(0.5))
+                        .offset(y: 6)
+                      
                     }
                 }
+                .frame(width: 300, height: 260)
+                .padding(.horizontal)
                 
-                Text("Today's activity")
-                    .font(.system(size:25))
+            
+                
+                NavigationLink {
+                    HistoryScreen(list: supabaseVM.result.value ?? [])
+                } label: {
+                    Text("View History")
+                        .font(.system(size:20))
+                        .foregroundColor(.blue)
+                }
+
+              
+                
+                Space(height: 50)
+                Text("Activities")
+                    .font(.system(size:20))
                     .foregroundColor(.white)
+                    .frame(maxWidth:.infinity, alignment:.leading)
                 Space(height: 20)
               // MARK: Containers -------------->
                
                 NavigationLink {
                     energy_screen()
                 } label: {
-                    CarbonCard(name: "Energy", date: energyVm.data.value?.createdAt.formatDate ?? "", value:String(  energyVm.data.value?.carbonKg.rounded(toDecimalPlaces: 1) ?? 0.0), image: "light", isLoading: energyVm.data.isLoading)
+                    CarbonCard(name: "Energy", value:String(  energyVm.data.value?.carbonKg.rounded(toDecimalPlaces: 1) ?? 0.0), image: "light", isLoading: energyVm.data.isLoading)
                 }
                 .accentColor(.clear)
+                .accessibilityIdentifier("Energy")
            
+
                 NavigationLink {
                     Ship_screen()
                 } label: {
-                    CarbonCard(name: "logistics", date: shipVm.data.value?.createdAt.formatDate ?? "", value: String(  shipVm.data.value?.carbonKg.rounded(toDecimalPlaces: 1) ?? 0.0), image: "ship", isLoading: shipVm.data.isLoading)
+                    CarbonCard(name: "logistics", value: String(  shipVm.data.value?.carbonKg.rounded(toDecimalPlaces: 1) ?? 0.0), image: "ship", isLoading: shipVm.data.isLoading)
                 }
                 .accentColor(.clear)
+                .accessibilityIdentifier("logistics")
                 
                 NavigationLink {
                     flight_screen()
                 } label: {
-                    CarbonCard(name: "Flights", date: flightVm.data.value?.createdAt.formatDate ?? "", value: String(  flightVm.data.value?.carbonKg.rounded(toDecimalPlaces: 1) ?? 0.0), image: "plane", isLoading: flightVm.data.isLoading)
+                    CarbonCard(name: "Flights", value: String(  flightVm.data.value?.carbonKg.rounded(toDecimalPlaces: 1) ?? 0.0), image: "plane", isLoading: flightVm.data.isLoading)
                 }
                 .accentColor(.clear) // Set the accent color to clear
+                .accessibilityIdentifier("Flights")
+
                     
-                Spacer()
             }
-            .frame(maxHeight: .infinity, alignment: .topLeading)
+            .frame(maxHeight: .infinity)
             .padding(.horizontal, 25)
             .background(.black)
             .edgesIgnoringSafeArea(.bottom)
+            .edgesIgnoringSafeArea(.top)
+            .alert("Error", isPresented: $supabaseVM.hasError, actions: {
+                Button("Ok", role: .cancel, action: {})
+            }, message: {
+                Text("An Error occured")
+            })
             .onAppear{
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     // Code you want to execute after the delay
                     withAnimation {
 //                        guard self.borderanim1 < 0.65 else { return }
                         self.borderanim1 =
-                        CGFloat( (supabaseVM.carbonFTP ?? 0.0) / 100 )
-                        
-                        
-                        print(self.borderanim1)
+                        CGFloat( (supabaseVM.carbonFTP) / 100)
                     }
                 }
            
             }
-       
         }
-        
     }
     
     
@@ -237,8 +266,9 @@ struct ContentView: View {
     
     
     
+    
     @ViewBuilder
-    func CarbonCard(name: String, date: String, value: String, image: String, isLoading: Bool)-> some View {
+    func CarbonCard(name: String, value: String, image: String, isLoading: Bool)-> some View {
         
         Rectangle()
             .cornerRadius(5)
@@ -261,14 +291,7 @@ struct ContentView: View {
                                 .frame(width: 35, height: 35)
                         }
                         
-                        if(!date.isEmpty){
-                            Spacer()
-                                .frame(height: 8)
-                            Text(date)
-                                .font(.system(size:15))
-                                .foregroundColor(.white)
-                            
-                        }
+                     
                     }
                     Spacer()
                     HStack {
@@ -287,16 +310,36 @@ struct ContentView: View {
                         }
                         
                         
-                        Text("mt")
+                        Text("Kg")
                             .font(.custom(Font.climateCrisis, size: 15))
                             .foregroundColor(.white)
                         .shadow(color: .black.opacity(0.1), radius: 20)
                     }
                 }
                 .frame(maxWidth: .infinity, alignment:  .leading)
-                .padding(.leading, 20)
-                .padding(.trailing, 30)
+                .padding(.leading, 10)
+                .padding(.trailing, 20)
             }
+    }
+    
+    
+    
+    
+    func carbonFt(value: String) -> Double {
+        switch value {
+        case "kg":
+            return  supabaseVM.carbonFTP.rounded(toDecimalPlaces: 1)
+        case "mt":
+          let result =  supabaseVM.carbonFTP.rounded(toDecimalPlaces: 1) / 1000
+            return  result.rounded(toDecimalPlaces: 1)
+        case "lb":
+           let result =  supabaseVM.carbonFTP.rounded(toDecimalPlaces: 1) * 2.20462
+            
+            return result.rounded(toDecimalPlaces: 1)
+        default:
+            return  supabaseVM.carbonFTP.rounded(toDecimalPlaces: 1)
+        }
+        
     }
     
     

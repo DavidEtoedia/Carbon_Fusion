@@ -10,7 +10,6 @@ import Foundation
 class FlightViewModel: ObservableObject {
     @Service  private var supaBaseRepo: SupaBaseRepository
     @Published var data: ResultState<DataModel, String> = .idle
-    @Published var result: ResultState<FlightResponseModel, String> = .idle
     @Service private var repository : HttpRepository
     @Published var hasError : Bool = false
     
@@ -24,20 +23,17 @@ class FlightViewModel: ObservableObject {
         if(passengers == .zero || legs.isEmpty){
             return
         }
-        self.result = .loading
+        self.data = .loading
         let flight = FlightReq(type: "flight", passengers: 2, legs: legs)
         
-        repository.createFlight(body: flight) { result in
+        repository.createFlight(session: .customSession, body: flight) { result in
             switch result {
             case .success(let res):
-                print(res)
-                self.result = .success(res)
-                self.getFlights()
+                self.data = .success(DataModel(carbonKg: res.data?.attributes?.carbon_mt ?? 0.0, createdAt: res.data?.attributes?.estimated_at ?? "", name: "Flight"))
                 self.hasError = false
             case .failure(let err):
-                print(err.errorDescription ?? "")
                 self.hasError = true
-                self.result = .failure(err.errorDescription ?? "")
+                self.data = .failure(err.errorDescription ?? "")
                 
             }
         }
@@ -60,5 +56,6 @@ class FlightViewModel: ObservableObject {
             }
         }
     }
+    
     
 }

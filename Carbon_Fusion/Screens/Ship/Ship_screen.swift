@@ -40,8 +40,8 @@ struct Ship_screen: View {
                       
                     CircleView(
                         carbonValue: String(
-                            shipVm.result.value?.data?.attributes?.carbon_kg?.rounded(toDecimalPlaces: 1) ?? Double(0.0)
-                        ), isLoading: shipVm.result.isLoading)
+                            shipVm.data.value?.carbonKg.rounded(toDecimalPlaces: 1) ?? Double(0.0)
+                        ), isLoading: shipVm.data.isLoading)
                         
                         VStack(alignment: .leading) {
                             HStack{
@@ -59,6 +59,7 @@ struct Ship_screen: View {
                                             .focused($isDistance)
                                             .submitLabel(.next)
                                             .frame(width: 60)
+                                            .accessibilityIdentifier("distance")
                                           
                                         
                                         Picker("", selection: $selectedDistance) {
@@ -91,6 +92,7 @@ struct Ship_screen: View {
                                                     }
                                                 }
                                         }
+                                            .accessibilityIdentifier("weight")
                                         
                                         
                                         Picker("", selection: $selectedWeight) {
@@ -103,7 +105,6 @@ struct Ship_screen: View {
                             
                             }
                             
-                       
                             Space(height: 20)
                             
                             HStack {
@@ -139,6 +140,7 @@ struct Ship_screen: View {
                                       }
                                 }
                             }
+                           
                                
                             Spacer()
                                 .frame(height: 40)
@@ -146,6 +148,7 @@ struct Ship_screen: View {
                                 .onTapGesture {
                                     shipVm.createShip(weightValue: weight, weightUnit: selectedWeight, distanceValue: distance, distanceUnit: selectedDistance, transportMethod: selectedMethod)
                                 }
+                                .accessibilityIdentifier("calculate")
                          
 
                         }
@@ -162,7 +165,7 @@ struct Ship_screen: View {
                             
                         }
                     }, message: {
-                        Text(shipVm.result.error ?? "")
+                        Text(shipVm.data.error ?? "")
                     })
               
                     Spacer()

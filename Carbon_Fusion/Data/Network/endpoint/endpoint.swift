@@ -27,7 +27,7 @@ enum ApiKey: CustomStringConvertible {
     var description: String {
         switch self {
         case .apiKey:
-            return "fL1P0SMxpidl6FclW2ONWg"
+            return "F82DCokN27ngqpcMsN6v1Q"
         }
     }
 }

@@ -12,10 +12,7 @@ class EnergyViewModel : ObservableObject {
     @Service private var repository : HttpRepository
     @Service  private var supaBaseRepo: SupaBaseRepository
     @Published var data: ResultState<DataModel, String> = .idle
-    @Published var result: ResultState<ElectricityResponse, String> = .idle
     @Published var carbonVal : Double = 0.0
-    @Published var electricity = ElectricityResponse()
-    
     @Published var hasError : Bool = false
     
     
@@ -23,24 +20,23 @@ class EnergyViewModel : ObservableObject {
     init() {
         self.getEnergy()
     }
+  
     
     func calEnergy(value: Int, state: String) {
-        self.result = .loading
+        self.data = .loading
     let req = ElectricityReq(type: "electricity", electricityUnit: "kwh", electricityValue: value, country: "us", state: state)
        // defer { self.result = .idle }
         if((value == .zero) || (state.isEmpty)){
             return
         } else{
-            repository.createEnergy(body: req) { result in
+            repository.createEnergy(session: .customSession, body: req) { result in
                 switch result {
                 case .success(let res):
-                    self.electricity = res
-                    self.result = .success(res)
-                    self.getEnergy()
+                    self.data = .success(DataModel(carbonKg: res.datum?.attributes?.carbon_kg ?? 0.0, createdAt: res.datum?.attributes?.estimated_at ?? "", name: "Energy"))
                 case .failure(let err):
                     print("printed \(err.localizedDescription)")
                     self.hasError = true
-                    self.result = .failure(err.errorDescription ?? "")
+                    self.data = .failure(err.errorDescription ?? "")
             
                 }
             }
@@ -59,9 +55,9 @@ class EnergyViewModel : ObservableObject {
                 hasError = false
             }
             catch{
-                self.result = .idle
+                self.data = .idle
                 hasError = true
-                self.result = .failure(error.localizedDescription)
+                self.data = .failure(error.localizedDescription)
             }
         }
      
