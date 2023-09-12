@@ -8,7 +8,7 @@
 import SwiftUI
 
 
-struct flight_screen: View {
+struct FlightScreen: View {
     @EnvironmentObject private var flightVm: FlightViewModel
     @State private var showStatus = false
     @State  private var passenger: Int = 0
@@ -208,7 +208,7 @@ struct flight_screen: View {
 
 struct flight_screen_Previews: PreviewProvider {
     static var previews: some View {
-        flight_screen()
+        FlightScreen()
             .environmentObject(FlightViewModel())
     }
 }

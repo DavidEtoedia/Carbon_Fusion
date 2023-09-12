@@ -8,7 +8,11 @@
 import SwiftUI
 
 struct HistoryScreen: View {
+    //MARK: Navigation Path
     @EnvironmentObject private var supaBaseVm: SupbaseViewModel
+    @EnvironmentObject var router: Router<Path>
+    
+   
     @State private var isSelected: Bool = false
     @State private var showAlert: Bool = false
     @State private var selectedid: String = ""
@@ -60,13 +64,14 @@ struct HistoryScreen: View {
                 Button(role: .none, action: {
                     showAlert = false
                     supaBaseVm.delete(id: selectedid.lowercased())
+                    if(supaBaseVm.delete.isSuccess){
+                        router.pop()
+                    }
                 }, label: {
                     Text("Delete")
                         .foregroundColor(.red)
                 })
-                Button("Cancel", role: .cancel) {
-                    //supaBaseVm.delete(id: selectedid)
-                }
+                Button("Cancel", role: .cancel){}
             }
         })
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
@@ -81,7 +86,7 @@ struct HistoryScreen: View {
 
 struct HistoryScreen_Previews: PreviewProvider {
     static var previews: some View {
-        HistoryScreen(list: mockResponse)
+        HistoryScreen( list: mockResponse)
             .environmentObject(SupbaseViewModel())
     }
 }
@@ -93,19 +98,6 @@ struct CarbonHistory<Content: View>: View {
     @ViewBuilder let content: () -> Content
     var body: some View {
         
-        /*
-         
-         if(loading){
-             ProgressView()
-                 .progressViewStyle(CircularProgressViewStyle(tint: .white))
-                 .padding(.vertical, 15)
-         }
-         else{
-             Button(action: action) {
-                 Image(systemName: "trash")
-             }
-         }
-         */
         HStack {
             HStack {
                 VStack(alignment:.leading) {

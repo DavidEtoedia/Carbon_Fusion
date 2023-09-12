@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct energy_screen: View {
+struct EnergyScreen: View {
     @EnvironmentObject private var energyVm: EnergyViewModel
     @Environment(\.presentationMode) var dismiss
 
@@ -144,7 +144,7 @@ struct energy_screen_Previews: PreviewProvider {
     static var previews: some View {
 //
         let _ = ServiceContainer.register(type: HttpRepository.self, HttpRepositoryImp())
-        energy_screen()
+        EnergyScreen()
             .environmentObject(EnergyViewModel())
     }
 }

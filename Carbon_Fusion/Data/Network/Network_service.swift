@@ -20,6 +20,7 @@ protocol NetworkServiceManager {
 
 
 final class NetworkService: NetworkServiceManager {
+    
     func request<T>(session: URLSession = .customSession ,method: HttpMethod, path: Path, body: Data?, completion: @escaping (Result<T, ApiError>) -> Void) where T : Decodable, T : Encodable {
         var request = URLRequest(url: uRLComponents(path: path)!)
         request.httpMethod = method.rawValue

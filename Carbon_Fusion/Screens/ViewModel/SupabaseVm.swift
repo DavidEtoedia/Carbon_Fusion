@@ -8,37 +8,59 @@
 import Foundation
 
 class SupbaseViewModel: ObservableObject {
-    @Service  private var supaBaseRepo: SupaBaseRepository
+    private var supaBaseRepo: SupaBaseRepository
+    
     @Published var dataValue: DataModel = DataModel(carbonKg: 0.0, createdAt: "", name: "Carbon")
+    @Published var flight: DataModel?
+    @Published var energy: DataModel?
+    @Published var logistics: DataModel?
     @Published var result: ResultState<[DataModel], String> = .idle
     @Published var delete: ResultState<String?, String> = .idle
     @Published var hasError : Bool = false
+    @Published var isDelete : Bool = false
     @Published var errorMsg : String = ""
     @Published var carbonFTP : Double = 0.0
     
 
     init() {
-    //MARK: Get the response from supabase
-        Task{
-            await getTotal()
+        let supaBaseRepo: SupaBaseRepository // Declare a local variable
+        
+        #if DEBUG
+        if UITestingHelper.isUITesting {
+            supaBaseRepo = MockSupaBaseRepository()
+        } else {
+            supaBaseRepo = SupaBaseRepoImpl()
         }
-//    //MARK: Listens to insert and delete event on the table
+        #else
+        supaBaseRepo = SupaBaseRepository()
+        #endif
+        
+        // Now, use the local variable to initialize your property
+        self.supaBaseRepo = supaBaseRepo
+
+        // The rest of your code here
+        Task {
+            await self.getTotal()
+        }
         getChannel()
     }
+
     
   
     
     func getTotal()async {
+        self.result = .loading
         do {
             let result = try  await supaBaseRepo.getRequest(table: "Carbon")
+           
+            let totalCarbonKg = result?.reduce(0) { $0 + $1.carbonKg }
+            carbonFTP = totalCarbonKg ?? 0
+          
+            logistics = result?.filter{$0.name == "Logistics"}.first
+            flight = result?.filter{$0.name == "Flight"}.first
+            energy = result?.filter{$0.name == "Energy"}.first
+           
             self.result = .success(result ?? [])
-            var sumByLastValue: [String: Double] = [:]
-
-            for object in result! {
-                sumByLastValue[object.name] = object.carbonKg
-            }
-            let sum = sumByLastValue.values.reduce(0, +)
-            carbonFTP = sum
             hasError = false
             
         }
@@ -54,7 +76,7 @@ class SupbaseViewModel: ObservableObject {
         Task {
             do{
               try await supaBaseRepo.delete(id: id)
-                self.delete = .success(nil)
+                self.delete = .success("Success")
             }
             catch {
                 hasError = true
@@ -77,7 +99,6 @@ class SupbaseViewModel: ObservableObject {
         }
         user.on(.delete) { message in
             print(message.payload)
-            //MARK: Make a request to get the updated values on the Table
             Task{
                 await self.getTotal()
             }
@@ -85,11 +106,11 @@ class SupbaseViewModel: ObservableObject {
         user.subscribe()
         hasError = user.isErrored
     }
-    
-    func unsubscribe(){
-        let user =  supaBaseRepo.realTime()
-        user.unsubscribe()
-    }
+//    
+//    func unsubscribe(){
+//        let user =  supaBaseRepo.realTime()
+//        user.unsubscribe()
+//    }
     
 
 }

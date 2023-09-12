@@ -7,8 +7,9 @@
 
 import SwiftUI
 
-struct Ship_screen: View {
+struct LogisticScreen: View {
     @EnvironmentObject private var shipVm: ShipViewModel
+    @EnvironmentObject private var supaBase: SupbaseViewModel
     @State private var showStatus = false
     @State  private var distance: Int = 0
     @State  private var weight: Int = 0
@@ -181,7 +182,7 @@ struct Ship_screen: View {
 
 struct Ship_screen_Previews: PreviewProvider {
     static var previews: some View {
-        Ship_screen()
+        LogisticScreen()
             .environmentObject(ShipViewModel())
     }
 }

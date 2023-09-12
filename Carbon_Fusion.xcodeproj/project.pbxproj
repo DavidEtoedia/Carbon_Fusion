@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C07823F2AA246E300FEE9F9 /* SupabaseSuccessService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C07823E2AA246E300FEE9F9 /* SupabaseSuccessService.swift */; };
+		0C0782472AA2B5DB00FEE9F9 /* SupbaseRepositorySuccessTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0782462AA2B5DB00FEE9F9 /* SupbaseRepositorySuccessTest.swift */; };
 		0C097EEF2A62E539008EC12C /* SheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C097EEE2A62E539008EC12C /* SheetView.swift */; };
 		0C1823532A5A1CCF00272CAF /* StateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C1823522A5A1CCF00272CAF /* StateModel.swift */; };
 		0C18DFF42A8A8BE700417A7D /* MockURLSessionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C18DFF32A8A8BE700417A7D /* MockURLSessionProtocol.swift */; };
@@ -14,8 +16,15 @@
 		0C18DFFB2A8AC66300417A7D /* RepositoryImpTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C18DFFA2A8AC66300417A7D /* RepositoryImpTest.swift */; };
 		0C1D1E2A2A3FC7F6008DC766 /* energy_screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C1D1E292A3FC7F6008DC766 /* energy_screen.swift */; };
 		0C1D1E2C2A3FC805008DC766 /* flight_screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C1D1E2B2A3FC805008DC766 /* flight_screen.swift */; };
+		0C1EC9F32AA5E41300EDB92A /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C222AFE2A74A050003EB7AC /* DataModel.swift */; };
+		0C1EC9F52AA5F49700EDB92A /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C222AFB2A7491EF003EB7AC /* Utils.swift */; };
+		0C1EC9F62AA5F4BE00EDB92A /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4D509B2A4CACD300671E22 /* Service.swift */; };
+		0C1EC9F72AA5F57C00EDB92A /* Service_Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4D509D2A4CACEA00671E22 /* Service_Container.swift */; };
+		0C1EC9FD2AA5F7E900EDB92A /* Supabase-Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C222AF92A749177003EB7AC /* Supabase-Service.swift */; };
+		0C1EC9FE2AA5F93F00EDB92A /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C589D422AA50C240018C79B /* WidgetKit.framework */; };
+		0C1ECA022AA5F95800EDB92A /* Supabase in Frameworks */ = {isa = PBXBuildFile; productRef = 0C1ECA012AA5F95800EDB92A /* Supabase */; };
+		0C1ECA032AA60E2500EDB92A /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE3971E2A4F4D58008482CF /* extensions.swift */; };
 		0C2108AD2A844CFA00C0C9D3 /* HistoryScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2108AC2A844CFA00C0C9D3 /* HistoryScreen.swift */; };
-		0C222AF72A7490F6003EB7AC /* Supabase in Frameworks */ = {isa = PBXBuildFile; productRef = 0C222AF62A7490F6003EB7AC /* Supabase */; };
 		0C222AFA2A749177003EB7AC /* Supabase-Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C222AF92A749177003EB7AC /* Supabase-Service.swift */; };
 		0C222AFC2A7491EF003EB7AC /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C222AFB2A7491EF003EB7AC /* Utils.swift */; };
 		0C222AFF2A74A050003EB7AC /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C222AFE2A74A050003EB7AC /* DataModel.swift */; };
@@ -34,6 +43,25 @@
 		0C4D50A52A4CC82500671E22 /* http_repository_imp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4D50A42A4CC82500671E22 /* http_repository_imp.swift */; };
 		0C4D50A82A4CD88F00671E22 /* Json_Mapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4D50A72A4CD88F00671E22 /* Json_Mapper.swift */; };
 		0C4D50AB2A4CEAC900671E22 /* energy_vm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4D50AA2A4CEAC900671E22 /* energy_vm.swift */; };
+		0C508A862AA3715F00091D69 /* SupabaseSuccessRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0782492AA2B64600FEE9F9 /* SupabaseSuccessRepo.swift */; };
+		0C508A872AA3717600091D69 /* SupbaseSuccessMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0782412AA28EEC00FEE9F9 /* SupbaseSuccessMock.swift */; };
+		0C508A882AA3718000091D69 /* SupabaseFailureMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0782432AA2B01500FEE9F9 /* SupabaseFailureMock.swift */; };
+		0C508A8B2AA38E4A00091D69 /* NetworkServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C508A8A2AA38E4A00091D69 /* NetworkServiceMock.swift */; };
+		0C508A8E2AA3914E00091D69 /* HttpRepositoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C508A8D2AA3914E00091D69 /* HttpRepositoryMock.swift */; };
+		0C54FC792A9F569E00AC1296 /* NavigationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C54FC782A9F569E00AC1296 /* NavigationService.swift */; };
+		0C5768722AA1651E00AE4FC0 /* HomeScreenUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5768712AA1651E00AE4FC0 /* HomeScreenUITest.swift */; };
+		0C5768752AA1687300AE4FC0 /* UITestingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5768742AA1687300AE4FC0 /* UITestingHelper.swift */; };
+		0C5768782AA1717800AE4FC0 /* Supabase in Frameworks */ = {isa = PBXBuildFile; productRef = 0C5768772AA1717800AE4FC0 /* Supabase */; };
+		0C589D452AA50C240018C79B /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C589D442AA50C240018C79B /* SwiftUI.framework */; };
+		0C589D482AA50C240018C79B /* FusionWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C589D472AA50C240018C79B /* FusionWidgetBundle.swift */; };
+		0C589D4A2AA50C240018C79B /* FusionWidgetLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C589D492AA50C240018C79B /* FusionWidgetLiveActivity.swift */; };
+		0C589D4C2AA50C240018C79B /* FusionWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C589D4B2AA50C240018C79B /* FusionWidget.swift */; };
+		0C589D4E2AA50C260018C79B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C589D4D2AA50C260018C79B /* Assets.xcassets */; };
+		0C589D522AA50C260018C79B /* FusionWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 0C589D402AA50C240018C79B /* FusionWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		0C589D582AA550780018C79B /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C589D572AA550780018C79B /* Provider.swift */; };
+		0C589D5A2AA550CC0018C79B /* SimpleEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C589D592AA550CC0018C79B /* SimpleEntry.swift */; };
+		0C589D5C2AA5512D0018C79B /* FusionWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C589D5B2AA5512D0018C79B /* FusionWidgetView.swift */; };
+		0C589D5E2AA5544F0018C79B /* WidgetMedium.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C589D5D2AA5544F0018C79B /* WidgetMedium.swift */; };
 		0C7F0C862A65F19F007244F1 /* Vehicles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7F0C852A65F19F007244F1 /* Vehicles.swift */; };
 		0C7F0C882A660149007244F1 /* Network_service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7F0C872A660149007244F1 /* Network_service.swift */; };
 		0C880A502A827DDB00AC9052 /* ChatScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C880A4F2A827DDB00AC9052 /* ChatScreen.swift */; };
@@ -59,6 +87,8 @@
 		0CE9A1F62A72B733009E099F /* Ship_req.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE9A1F52A72B733009E099F /* Ship_req.swift */; };
 		0CE9A1F92A72C0DE009E099F /* Ship_screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE9A1F82A72C0DE009E099F /* Ship_screen.swift */; };
 		0CE9A1FC2A72C167009E099F /* ship_vm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE9A1FB2A72C167009E099F /* ship_vm.swift */; };
+		0CEA21E52AB0E0B80098B4EB /* MainRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEA21E42AB0E0B80098B4EB /* MainRoute.swift */; };
+		0CEA21E72AB0E1110098B4EB /* RouteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEA21E62AB0E1110098B4EB /* RouteView.swift */; };
 		0CF8DC2A2A1439F30035A545 /* Carbon_FusionApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF8DC292A1439F30035A545 /* Carbon_FusionApp.swift */; };
 		0CF8DC2C2A1439F30035A545 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF8DC2B2A1439F30035A545 /* ContentView.swift */; };
 		0CF8DC2E2A1439F40035A545 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CF8DC2D2A1439F40035A545 /* Assets.xcassets */; };
@@ -66,6 +96,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		0C5768692AA1641E00AE4FC0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0CF8DC1E2A1439F30035A545 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0CF8DC252A1439F30035A545;
+			remoteInfo = Carbon_Fusion;
+		};
+		0C589D502AA50C260018C79B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0CF8DC1E2A1439F30035A545 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0C589D3F2AA50C240018C79B;
+			remoteInfo = FusionWidgetExtension;
+		};
 		0CD22C2C2A897C70006BA67D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0CF8DC1E2A1439F30035A545 /* Project object */;
@@ -75,7 +119,36 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		0C589D532AA50C260018C79B /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				0C589D522AA50C260018C79B /* FusionWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0CB366852A968E5B004A432C /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		0C07823E2AA246E300FEE9F9 /* SupabaseSuccessService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupabaseSuccessService.swift; sourceTree = "<group>"; };
+		0C0782412AA28EEC00FEE9F9 /* SupbaseSuccessMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupbaseSuccessMock.swift; sourceTree = "<group>"; };
+		0C0782432AA2B01500FEE9F9 /* SupabaseFailureMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupabaseFailureMock.swift; sourceTree = "<group>"; };
+		0C0782462AA2B5DB00FEE9F9 /* SupbaseRepositorySuccessTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupbaseRepositorySuccessTest.swift; sourceTree = "<group>"; };
+		0C0782492AA2B64600FEE9F9 /* SupabaseSuccessRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupabaseSuccessRepo.swift; sourceTree = "<group>"; };
 		0C097EEE2A62E539008EC12C /* SheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetView.swift; sourceTree = "<group>"; };
 		0C1823522A5A1CCF00272CAF /* StateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateModel.swift; sourceTree = "<group>"; };
 		0C18DFF32A8A8BE700417A7D /* MockURLSessionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSessionProtocol.swift; sourceTree = "<group>"; };
@@ -102,6 +175,24 @@
 		0C4D50A42A4CC82500671E22 /* http_repository_imp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = http_repository_imp.swift; sourceTree = "<group>"; };
 		0C4D50A72A4CD88F00671E22 /* Json_Mapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Json_Mapper.swift; sourceTree = "<group>"; };
 		0C4D50AA2A4CEAC900671E22 /* energy_vm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = energy_vm.swift; sourceTree = "<group>"; };
+		0C508A8A2AA38E4A00091D69 /* NetworkServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceMock.swift; sourceTree = "<group>"; };
+		0C508A8D2AA3914E00091D69 /* HttpRepositoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpRepositoryMock.swift; sourceTree = "<group>"; };
+		0C54FC782A9F569E00AC1296 /* NavigationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationService.swift; sourceTree = "<group>"; };
+		0C5768632AA1641E00AE4FC0 /* Carbon_FusionUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Carbon_FusionUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0C5768712AA1651E00AE4FC0 /* HomeScreenUITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenUITest.swift; sourceTree = "<group>"; };
+		0C5768742AA1687300AE4FC0 /* UITestingHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestingHelper.swift; sourceTree = "<group>"; };
+		0C589D402AA50C240018C79B /* FusionWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = FusionWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		0C589D422AA50C240018C79B /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		0C589D442AA50C240018C79B /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		0C589D472AA50C240018C79B /* FusionWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FusionWidgetBundle.swift; sourceTree = "<group>"; };
+		0C589D492AA50C240018C79B /* FusionWidgetLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FusionWidgetLiveActivity.swift; sourceTree = "<group>"; };
+		0C589D4B2AA50C240018C79B /* FusionWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FusionWidget.swift; sourceTree = "<group>"; };
+		0C589D4D2AA50C260018C79B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0C589D4F2AA50C260018C79B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0C589D572AA550780018C79B /* Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
+		0C589D592AA550CC0018C79B /* SimpleEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleEntry.swift; sourceTree = "<group>"; };
+		0C589D5B2AA5512D0018C79B /* FusionWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FusionWidgetView.swift; sourceTree = "<group>"; };
+		0C589D5D2AA5544F0018C79B /* WidgetMedium.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetMedium.swift; sourceTree = "<group>"; };
 		0C7F0C852A65F19F007244F1 /* Vehicles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vehicles.swift; sourceTree = "<group>"; };
 		0C7F0C872A660149007244F1 /* Network_service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network_service.swift; sourceTree = "<group>"; };
 		0C880A4F2A827DDB00AC9052 /* ChatScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatScreen.swift; sourceTree = "<group>"; };
@@ -129,6 +220,8 @@
 		0CE9A1F52A72B733009E099F /* Ship_req.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ship_req.swift; sourceTree = "<group>"; };
 		0CE9A1F82A72C0DE009E099F /* Ship_screen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ship_screen.swift; sourceTree = "<group>"; };
 		0CE9A1FB2A72C167009E099F /* ship_vm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ship_vm.swift; sourceTree = "<group>"; };
+		0CEA21E42AB0E0B80098B4EB /* MainRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRoute.swift; sourceTree = "<group>"; };
+		0CEA21E62AB0E1110098B4EB /* RouteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteView.swift; sourceTree = "<group>"; };
 		0CF8DC262A1439F30035A545 /* Carbon_Fusion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Carbon_Fusion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CF8DC292A1439F30035A545 /* Carbon_FusionApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Carbon_FusionApp.swift; sourceTree = "<group>"; };
 		0CF8DC2B2A1439F30035A545 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -137,6 +230,23 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		0C5768602AA1641E00AE4FC0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0C589D3D2AA50C240018C79B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0C589D452AA50C240018C79B /* SwiftUI.framework in Frameworks */,
+				0C1EC9FE2AA5F93F00EDB92A /* WidgetKit.framework in Frameworks */,
+				0C1ECA022AA5F95800EDB92A /* Supabase in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0CD22C252A897C70006BA67D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -148,13 +258,58 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0C222AF72A7490F6003EB7AC /* Supabase in Frameworks */,
+				0C5768782AA1717800AE4FC0 /* Supabase in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C07823C2AA246B200FEE9F9 /* Supabase */ = {
+			isa = PBXGroup;
+			children = (
+				0C0782452AA2B57C00FEE9F9 /* SupabaseRepositoryTest */,
+				0C07823D2AA246BD00FEE9F9 /* SupabaseService */,
+			);
+			path = Supabase;
+			sourceTree = "<group>";
+		};
+		0C07823D2AA246BD00FEE9F9 /* SupabaseService */ = {
+			isa = PBXGroup;
+			children = (
+				0C07823E2AA246E300FEE9F9 /* SupabaseSuccessService.swift */,
+			);
+			path = SupabaseService;
+			sourceTree = "<group>";
+		};
+		0C0782402AA28EDB00FEE9F9 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				0C508A8C2AA3912D00091D69 /* HttpRepository */,
+				0C508A892AA38E2A00091D69 /* NetworkServiceMock */,
+				0C0782482AA2B5EC00FEE9F9 /* RepositoryMocks */,
+				0C0782412AA28EEC00FEE9F9 /* SupbaseSuccessMock.swift */,
+				0C0782432AA2B01500FEE9F9 /* SupabaseFailureMock.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		0C0782452AA2B57C00FEE9F9 /* SupabaseRepositoryTest */ = {
+			isa = PBXGroup;
+			children = (
+				0C0782462AA2B5DB00FEE9F9 /* SupbaseRepositorySuccessTest.swift */,
+			);
+			path = SupabaseRepositoryTest;
+			sourceTree = "<group>";
+		};
+		0C0782482AA2B5EC00FEE9F9 /* RepositoryMocks */ = {
+			isa = PBXGroup;
+			children = (
+				0C0782492AA2B64600FEE9F9 /* SupabaseSuccessRepo.swift */,
+			);
+			path = RepositoryMocks;
+			sourceTree = "<group>";
+		};
 		0C18DFF22A8A8BB800417A7D /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
@@ -316,6 +471,80 @@
 			path = maestro;
 			sourceTree = "<group>";
 		};
+		0C508A892AA38E2A00091D69 /* NetworkServiceMock */ = {
+			isa = PBXGroup;
+			children = (
+				0C508A8A2AA38E4A00091D69 /* NetworkServiceMock.swift */,
+			);
+			path = NetworkServiceMock;
+			sourceTree = "<group>";
+		};
+		0C508A8C2AA3912D00091D69 /* HttpRepository */ = {
+			isa = PBXGroup;
+			children = (
+				0C508A8D2AA3914E00091D69 /* HttpRepositoryMock.swift */,
+			);
+			path = HttpRepository;
+			sourceTree = "<group>";
+		};
+		0C54FC772A9F568A00AC1296 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				0C54FC782A9F569E00AC1296 /* NavigationService.swift */,
+				0CEA21E62AB0E1110098B4EB /* RouteView.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
+		0C5768642AA1641E00AE4FC0 /* Carbon_FusionUITests */ = {
+			isa = PBXGroup;
+			children = (
+				0C57686E2AA164C700AE4FC0 /* HomeScreen */,
+			);
+			path = Carbon_FusionUITests;
+			sourceTree = "<group>";
+		};
+		0C57686E2AA164C700AE4FC0 /* HomeScreen */ = {
+			isa = PBXGroup;
+			children = (
+				0C5768712AA1651E00AE4FC0 /* HomeScreenUITest.swift */,
+			);
+			path = HomeScreen;
+			sourceTree = "<group>";
+		};
+		0C5768732AA1685A00AE4FC0 /* UITesting */ = {
+			isa = PBXGroup;
+			children = (
+				0C5768742AA1687300AE4FC0 /* UITestingHelper.swift */,
+			);
+			path = UITesting;
+			sourceTree = "<group>";
+		};
+		0C589D412AA50C240018C79B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0C589D422AA50C240018C79B /* WidgetKit.framework */,
+				0C589D442AA50C240018C79B /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0C589D462AA50C240018C79B /* FusionWidget */ = {
+			isa = PBXGroup;
+			children = (
+				0C589D472AA50C240018C79B /* FusionWidgetBundle.swift */,
+				0C589D492AA50C240018C79B /* FusionWidgetLiveActivity.swift */,
+				0C589D4B2AA50C240018C79B /* FusionWidget.swift */,
+				0C589D4D2AA50C260018C79B /* Assets.xcassets */,
+				0C589D4F2AA50C260018C79B /* Info.plist */,
+				0C589D572AA550780018C79B /* Provider.swift */,
+				0C589D592AA550CC0018C79B /* SimpleEntry.swift */,
+				0C589D5B2AA5512D0018C79B /* FusionWidgetView.swift */,
+				0C589D5D2AA5544F0018C79B /* WidgetMedium.swift */,
+			);
+			path = FusionWidget;
+			sourceTree = "<group>";
+		};
 		0C880A4E2A827DB600AC9052 /* ChatScreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -385,6 +614,7 @@
 		0CD22C292A897C70006BA67D /* Carbon_FusionTests */ = {
 			isa = PBXGroup;
 			children = (
+				0C07823C2AA246B200FEE9F9 /* Supabase */,
 				0C18DFF82A8AC61C00417A7D /* Repository */,
 				0C18DFF52A8A8D5100417A7D /* NetworkService */,
 				0C18DFF22A8A8BB800417A7D /* Mocks */,
@@ -452,6 +682,9 @@
 			children = (
 				0CF8DC282A1439F30035A545 /* Carbon_Fusion */,
 				0CD22C292A897C70006BA67D /* Carbon_FusionTests */,
+				0C5768642AA1641E00AE4FC0 /* Carbon_FusionUITests */,
+				0C589D462AA50C240018C79B /* FusionWidget */,
+				0C589D412AA50C240018C79B /* Frameworks */,
 				0CF8DC272A1439F30035A545 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -461,6 +694,8 @@
 			children = (
 				0CF8DC262A1439F30035A545 /* Carbon_Fusion.app */,
 				0CD22C282A897C70006BA67D /* Carbon_FusionTests.xctest */,
+				0C5768632AA1641E00AE4FC0 /* Carbon_FusionUITests.xctest */,
+				0C589D402AA50C240018C79B /* FusionWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -468,17 +703,21 @@
 		0CF8DC282A1439F30035A545 /* Carbon_Fusion */ = {
 			isa = PBXGroup;
 			children = (
+				0C5768732AA1685A00AE4FC0 /* UITesting */,
+				0C54FC772A9F568A00AC1296 /* Navigation */,
 				0C4DF8D82A7A9E6500BA7579 /* maestro */,
 				0C1D1E282A3FC7D8008DC766 /* Screens */,
 				0CE3971D2A4F4D2F008482CF /* Utils */,
 				0C4D509F2A4CC72000671E22 /* domain */,
 				0CC1EDF72A36A0FE00B83569 /* Carbon-Fusion-Info.plist */,
+				0C0782402AA28EDB00FEE9F9 /* Mocks */,
 				0CC1EDF22A369D0100B83569 /* Font */,
 				0CF8DC372A143D7E0035A545 /* Data */,
 				0CF8DC292A1439F30035A545 /* Carbon_FusionApp.swift */,
 				0CF8DC2B2A1439F30035A545 /* ContentView.swift */,
 				0CF8DC2D2A1439F40035A545 /* Assets.xcassets */,
 				0CF8DC2F2A1439F40035A545 /* Preview Content */,
+				0CEA21E42AB0E0B80098B4EB /* MainRoute.swift */,
 			);
 			path = Carbon_Fusion;
 			sourceTree = "<group>";
@@ -518,6 +757,44 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		0C5768622AA1641E00AE4FC0 /* Carbon_FusionUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0C57686D2AA1641E00AE4FC0 /* Build configuration list for PBXNativeTarget "Carbon_FusionUITests" */;
+			buildPhases = (
+				0C57685F2AA1641E00AE4FC0 /* Sources */,
+				0C5768602AA1641E00AE4FC0 /* Frameworks */,
+				0C5768612AA1641E00AE4FC0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0C57686A2AA1641E00AE4FC0 /* PBXTargetDependency */,
+			);
+			name = Carbon_FusionUITests;
+			productName = Carbon_FusionUITests;
+			productReference = 0C5768632AA1641E00AE4FC0 /* Carbon_FusionUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		0C589D3F2AA50C240018C79B /* FusionWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0C589D562AA50C260018C79B /* Build configuration list for PBXNativeTarget "FusionWidgetExtension" */;
+			buildPhases = (
+				0C589D3C2AA50C240018C79B /* Sources */,
+				0C589D3D2AA50C240018C79B /* Frameworks */,
+				0C589D3E2AA50C240018C79B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FusionWidgetExtension;
+			packageProductDependencies = (
+				0C1ECA012AA5F95800EDB92A /* Supabase */,
+			);
+			productName = FusionWidgetExtension;
+			productReference = 0C589D402AA50C240018C79B /* FusionWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		0CD22C272A897C70006BA67D /* Carbon_FusionTests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0CD22C302A897C70006BA67D /* Build configuration list for PBXNativeTarget "Carbon_FusionTests" */;
@@ -543,14 +820,17 @@
 				0CF8DC222A1439F30035A545 /* Sources */,
 				0CF8DC232A1439F30035A545 /* Frameworks */,
 				0CF8DC242A1439F30035A545 /* Resources */,
+				0CB366852A968E5B004A432C /* Embed Watch Content */,
+				0C589D532AA50C260018C79B /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				0C589D512AA50C260018C79B /* PBXTargetDependency */,
 			);
 			name = Carbon_Fusion;
 			packageProductDependencies = (
-				0C222AF62A7490F6003EB7AC /* Supabase */,
+				0C5768772AA1717800AE4FC0 /* Supabase */,
 			);
 			productName = Carbon_Fusion;
 			productReference = 0CF8DC262A1439F30035A545 /* Carbon_Fusion.app */;
@@ -566,6 +846,13 @@
 				LastSwiftUpdateCheck = 1430;
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
+					0C5768622AA1641E00AE4FC0 = {
+						CreatedOnToolsVersion = 14.3;
+						TestTargetID = 0CF8DC252A1439F30035A545;
+					};
+					0C589D3F2AA50C240018C79B = {
+						CreatedOnToolsVersion = 14.3;
+					};
 					0CD22C272A897C70006BA67D = {
 						CreatedOnToolsVersion = 14.3;
 						TestTargetID = 0CF8DC252A1439F30035A545;
@@ -585,7 +872,7 @@
 			);
 			mainGroup = 0CF8DC1D2A1439F30035A545;
 			packageReferences = (
-				0C222AF52A7490F6003EB7AC /* XCRemoteSwiftPackageReference "supabase-swift" */,
+				0C5768762AA1717800AE4FC0 /* XCRemoteSwiftPackageReference "supabase-swift" */,
 			);
 			productRefGroup = 0CF8DC272A1439F30035A545 /* Products */;
 			projectDirPath = "";
@@ -593,11 +880,28 @@
 			targets = (
 				0CF8DC252A1439F30035A545 /* Carbon_Fusion */,
 				0CD22C272A897C70006BA67D /* Carbon_FusionTests */,
+				0C5768622AA1641E00AE4FC0 /* Carbon_FusionUITests */,
+				0C589D3F2AA50C240018C79B /* FusionWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		0C5768612AA1641E00AE4FC0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0C589D3E2AA50C240018C79B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0C589D4E2AA50C260018C79B /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0CD22C262A897C70006BA67D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -622,6 +926,34 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		0C57685F2AA1641E00AE4FC0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0C5768722AA1651E00AE4FC0 /* HomeScreenUITest.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0C589D3C2AA50C240018C79B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0C589D5E2AA5544F0018C79B /* WidgetMedium.swift in Sources */,
+				0C589D582AA550780018C79B /* Provider.swift in Sources */,
+				0C589D4A2AA50C240018C79B /* FusionWidgetLiveActivity.swift in Sources */,
+				0C589D482AA50C240018C79B /* FusionWidgetBundle.swift in Sources */,
+				0C589D5A2AA550CC0018C79B /* SimpleEntry.swift in Sources */,
+				0C1EC9F52AA5F49700EDB92A /* Utils.swift in Sources */,
+				0C1EC9F32AA5E41300EDB92A /* DataModel.swift in Sources */,
+				0C1ECA032AA60E2500EDB92A /* extensions.swift in Sources */,
+				0C1EC9F62AA5F4BE00EDB92A /* Service.swift in Sources */,
+				0C1EC9F72AA5F57C00EDB92A /* Service_Container.swift in Sources */,
+				0C589D5C2AA5512D0018C79B /* FusionWidgetView.swift in Sources */,
+				0C589D4C2AA50C240018C79B /* FusionWidget.swift in Sources */,
+				0C1EC9FD2AA5F7E900EDB92A /* Supabase-Service.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0CD22C242A897C70006BA67D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -629,6 +961,8 @@
 				0C18DFFB2A8AC66300417A7D /* RepositoryImpTest.swift in Sources */,
 				0C18DFF72A8A8D7D00417A7D /* NetworkServiceTest.swift in Sources */,
 				0C18DFF42A8A8BE700417A7D /* MockURLSessionProtocol.swift in Sources */,
+				0C0782472AA2B5DB00FEE9F9 /* SupbaseRepositorySuccessTest.swift in Sources */,
+				0C07823F2AA246E300FEE9F9 /* SupabaseSuccessService.swift in Sources */,
 				0CD22C2B2A897C70006BA67D /* Carbon_FusionTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -641,13 +975,18 @@
 				0CC1EDF92A36A1B800B83569 /* fonts.swift in Sources */,
 				0CE9A1E82A71ACD3009E099F /* BackButton.swift in Sources */,
 				0CE9A1EE2A71CEAD009E099F /* AppButton.swift in Sources */,
+				0C508A882AA3718000091D69 /* SupabaseFailureMock.swift in Sources */,
 				0CE3971F2A4F4D58008482CF /* extensions.swift in Sources */,
 				0C4D509E2A4CACEA00671E22 /* Service_Container.swift in Sources */,
 				0CE9A1F92A72C0DE009E099F /* Ship_screen.swift in Sources */,
 				0C276A512A6F1F4F00786CF2 /* Destination_Sheet.swift in Sources */,
 				0CF8DC2C2A1439F30035A545 /* ContentView.swift in Sources */,
+				0C508A8B2AA38E4A00091D69 /* NetworkServiceMock.swift in Sources */,
 				0C7F0C862A65F19F007244F1 /* Vehicles.swift in Sources */,
+				0C54FC792A9F569E00AC1296 /* NavigationService.swift in Sources */,
 				0CAB7CCE2A211FB70016BEDA /* Electricity_req.swift in Sources */,
+				0CEA21E72AB0E1110098B4EB /* RouteView.swift in Sources */,
+				0C508A8E2AA3914E00091D69 /* HttpRepositoryMock.swift in Sources */,
 				0C2108AD2A844CFA00C0C9D3 /* HistoryScreen.swift in Sources */,
 				0CA87DD92A64CEA30092EEDC /* Vehicle_req.swift in Sources */,
 				0CE9A1F42A72B0D2009E099F /* Ship_response.swift in Sources */,
@@ -660,6 +999,8 @@
 				0CE9A1F62A72B733009E099F /* Ship_req.swift in Sources */,
 				0C4D50AB2A4CEAC900671E22 /* energy_vm.swift in Sources */,
 				0C276A572A6FDBED00786CF2 /* Departure_sheet.swift in Sources */,
+				0C5768752AA1687300AE4FC0 /* UITestingHelper.swift in Sources */,
+				0C508A872AA3717600091D69 /* SupbaseSuccessMock.swift in Sources */,
 				0C276A4D2A6F0F8200786CF2 /* Flight_Req.swift in Sources */,
 				0C4980C52A674D3400174DFD /* KeyboardUtil.swift in Sources */,
 				0CE9A1FC2A72C167009E099F /* ship_vm.swift in Sources */,
@@ -676,6 +1017,8 @@
 				0CE9A1F12A72AE30009E099F /* Errors.swift in Sources */,
 				0C7F0C882A660149007244F1 /* Network_service.swift in Sources */,
 				0C4D50A82A4CD88F00671E22 /* Json_Mapper.swift in Sources */,
+				0C508A862AA3715F00091D69 /* SupabaseSuccessRepo.swift in Sources */,
+				0CEA21E52AB0E0B80098B4EB /* MainRoute.swift in Sources */,
 				0C097EEF2A62E539008EC12C /* SheetView.swift in Sources */,
 				0C8AF9592A1ED21300A5202D /* Electricity_Response.swift in Sources */,
 				0CA87DD72A64C1B30092EEDC /* Vehicle_response.swift in Sources */,
@@ -687,6 +1030,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		0C57686A2AA1641E00AE4FC0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0CF8DC252A1439F30035A545 /* Carbon_Fusion */;
+			targetProxy = 0C5768692AA1641E00AE4FC0 /* PBXContainerItemProxy */;
+		};
+		0C589D512AA50C260018C79B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0C589D3F2AA50C240018C79B /* FusionWidgetExtension */;
+			targetProxy = 0C589D502AA50C260018C79B /* PBXContainerItemProxy */;
+		};
 		0CD22C2D2A897C70006BA67D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 0CF8DC252A1439F30035A545 /* Carbon_Fusion */;
@@ -695,6 +1048,102 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		0C57686B2AA1641E00AE4FC0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ABK2TMF98V;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.david.Carbon-FusionUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Carbon_Fusion;
+			};
+			name = Debug;
+		};
+		0C57686C2AA1641E00AE4FC0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ABK2TMF98V;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.david.Carbon-FusionUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Carbon_Fusion;
+			};
+			name = Release;
+		};
+		0C589D542AA50C260018C79B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ABK2TMF98V;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FusionWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = FusionWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.david.Carbon-Fusion.FusionWidget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		0C589D552AA50C260018C79B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ABK2TMF98V;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FusionWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = FusionWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.david.Carbon-Fusion.FusionWidget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		0CD22C2E2A897C70006BA67D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -848,6 +1297,7 @@
 		0CF8DC352A1439F40035A545 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -878,6 +1328,7 @@
 		0CF8DC362A1439F40035A545 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -908,6 +1359,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		0C57686D2AA1641E00AE4FC0 /* Build configuration list for PBXNativeTarget "Carbon_FusionUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0C57686B2AA1641E00AE4FC0 /* Debug */,
+				0C57686C2AA1641E00AE4FC0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0C589D562AA50C260018C79B /* Build configuration list for PBXNativeTarget "FusionWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0C589D542AA50C260018C79B /* Debug */,
+				0C589D552AA50C260018C79B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		0CD22C302A897C70006BA67D /* Build configuration list for PBXNativeTarget "Carbon_FusionTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -938,9 +1407,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		0C222AF52A7490F6003EB7AC /* XCRemoteSwiftPackageReference "supabase-swift" */ = {
+		0C5768762AA1717800AE4FC0 /* XCRemoteSwiftPackageReference "supabase-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/supabase/supabase-swift.git";
+			repositoryURL = "https://github.com/supabase-community/supabase-swift";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 0.3.0;
@@ -949,9 +1418,14 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		0C222AF62A7490F6003EB7AC /* Supabase */ = {
+		0C1ECA012AA5F95800EDB92A /* Supabase */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 0C222AF52A7490F6003EB7AC /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			package = 0C5768762AA1717800AE4FC0 /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Supabase;
+		};
+		0C5768772AA1717800AE4FC0 /* Supabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0C5768762AA1717800AE4FC0 /* XCRemoteSwiftPackageReference "supabase-swift" */;
 			productName = Supabase;
 		};
 /* End XCSwiftPackageProductDependency section */

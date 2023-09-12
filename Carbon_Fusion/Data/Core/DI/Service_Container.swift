@@ -42,4 +42,8 @@ final class ServiceContainer {
             return factories[serviceName]?() as? Service
         }
     }
+    
+    static func clearCache() {
+           cache.removeAll()
+       }
 }

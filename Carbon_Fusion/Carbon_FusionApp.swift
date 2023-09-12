@@ -9,13 +9,14 @@ import SwiftUI
 
 @main
 struct Carbon_FusionApp: App {
-    
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+
     init(){
         setupServiceContainer()
     }
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainRoute()
                 .environmentObject(EnergyViewModel())
                 .environmentObject(ShipViewModel())
                 .environmentObject(FlightViewModel())
@@ -32,12 +33,51 @@ private extension Carbon_FusionApp {
         // Services
         ServiceContainer.register(type: URLSession.self, .shared)
        // ServiceContainer.register(type: UserDefaults.self, .standard)
+       
+        
+#if DEBUG
+        if UITestingHelper.isUITesting{
+            ServiceContainer.register(type: NetworkServiceManager.self, MockNetworkService())
+            ServiceContainer.register(type: MockSupaBaseManagerProtocol.self, MockSupaBaseMangerImpl())
+            ServiceContainer.register(type: SupaBaseRepository.self, MockSupaBaseRepository())
+            
+        }
+        else{
+            ServiceContainer.register(type: NetworkServiceManager.self, NetworkService())
+            ServiceContainer.register(type: SupaBaseManager.self, SupaBaseService.shared)
+            ServiceContainer.register(type: SupaBaseRepository.self, SupaBaseRepoImpl())
+            ServiceContainer.register(type: HttpRepository.self, HttpRepositoryImp())
+            
+            
+            
+        }
+#else
         ServiceContainer.register(type: NetworkServiceManager.self, NetworkService())
         ServiceContainer.register(type: SupaBaseManager.self, SupaBaseService())
+        ServiceContainer.register(type: SupaBaseRepository.self, SupaBaseRepoImpl())
+        ServiceContainer.register(type: HttpRepository.self, HttpRepositoryImp())
+        
+        
+#endif
+        
         
         // Repositories
-        ServiceContainer.register(type: HttpRepository.self, HttpRepositoryImp())
-        ServiceContainer.register(type: SupaBaseRepository.self, SupaBaseRepoImpl())
+       // ServiceContainer.register(type: HttpRepository.self, HttpRepositoryImp())
+        
+
     
+    }
+}
+
+
+class AppDelegate: UIResponder, UIApplicationDelegate {
+    
+    func application(_ application: UIApplication,
+                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+        //ServiceContainer.clearCache()
+        #if DEBUG
+        print("👷🏾‍♂️ Is UI Test Running: \(UITestingHelper.isUITesting)")
+        #endif
+        return true
     }
 }

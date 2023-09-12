@@ -9,8 +9,9 @@ import Foundation
 
 
 class EnergyViewModel : ObservableObject {
-    @Service private var repository : HttpRepository
-    @Service  private var supaBaseRepo: SupaBaseRepository
+    private var repository : HttpRepository
+    private var supaBaseRepo: SupaBaseRepository
+
     @Published var data: ResultState<DataModel, String> = .idle
     @Published var carbonVal : Double = 0.0
     @Published var hasError : Bool = false
@@ -18,6 +19,30 @@ class EnergyViewModel : ObservableObject {
     
     
     init() {
+        let supaBaseRepo: SupaBaseRepository
+        let repository: HttpRepository
+
+        
+        #if DEBUG
+        if UITestingHelper.isUITesting {
+            supaBaseRepo = MockSupaBaseRepository()
+            repository = MockHttpRepositoryImp()
+            
+        } else {
+            let supaBaseServiceRepo: SupaBaseRepository? = ServiceContainer.resolve(.singleton,SupaBaseRepository.self)
+            supaBaseRepo = supaBaseServiceRepo!
+            repository = HttpRepositoryImp()
+        }
+        #else
+        let supaBaseServiceRepo: SupaBaseRepository? = ServiceContainer.resolve(.singleton,SupaBaseRepository.self)
+        supaBaseRepo = supaBaseServiceRepo!
+        repository = HttpRepositoryImp()
+        #endif
+        
+        // Now, use the local variable to initialize your property
+        self.supaBaseRepo = supaBaseRepo
+        self.repository = repository
+
         self.getEnergy()
     }
   

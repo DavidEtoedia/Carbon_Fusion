@@ -8,13 +8,35 @@
 import Foundation
 
 class FlightViewModel: ObservableObject {
-    @Service  private var supaBaseRepo: SupaBaseRepository
+      private var supaBaseRepo: SupaBaseRepository
+     private var repository : HttpRepository
     @Published var data: ResultState<DataModel, String> = .idle
-    @Service private var repository : HttpRepository
     @Published var hasError : Bool = false
     
     
     init(){
+        let supbaseRepo : SupaBaseRepository
+        let httpRepo: HttpRepository
+        #if DEBUG
+        if(UITestingHelper.isUITesting){
+            supbaseRepo = MockSupaBaseRepository()
+            httpRepo = MockHttpRepositoryImp()
+        }
+        else{
+            let supaBaseServiceRepo: SupaBaseRepository?  = ServiceContainer.resolve(.singleton, SupaBaseRepository.self)
+            let httpServiceRepo: HttpRepository? = ServiceContainer.resolve(.singleton, HttpRepository.self)
+            supbaseRepo = supaBaseServiceRepo!
+            httpRepo = httpServiceRepo!
+        }
+        #else
+        let supaBaseServiceRepo: SupaBaseRepository?  = ServiceContainer.resolve(.singleton, SupaBaseRepository.self)
+        let httpServiceRepo: HttpRepository? = ServiceContainer.resolve(.singleton, HttpRepository.self)
+        supbaseRepo = supaBaseServiceRepo!
+        httpRepo = httpServiceRepo!
+        #endif
+        self.supaBaseRepo = supbaseRepo
+        self.repository = httpRepo
+        
         getFlights()
     }
     

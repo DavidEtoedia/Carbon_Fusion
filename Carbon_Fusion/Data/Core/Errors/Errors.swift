@@ -23,7 +23,7 @@ enum ApiError : Error {
             case.errorCode( let code):
                 return handleError(statusCode: code)
             case .unknown:
-                return "an Unknown Error occurred"
+                return "An Unknown Error occurred"
             case .EncodingError:
                 return "An Error occurred While Encoding"
             case .URLError:

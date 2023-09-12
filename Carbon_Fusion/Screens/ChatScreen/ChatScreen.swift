@@ -63,7 +63,6 @@ struct ChatScreen: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         .padding()
         .background(.black)
-        
     }
 }
 

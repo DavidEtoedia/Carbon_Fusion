@@ -14,7 +14,7 @@ protocol SupaBaseManager {
     func  request<T: Decodable>(reqBody: Encodable, table: String) async throws -> T
     func  delete(id: String) async throws -> Void
     func  getRequest<T: Decodable>(table: String) async throws -> T
-    func realTimeReq() -> Channel
+   func realTimeReq() -> Channel
 }
 
 
@@ -22,11 +22,11 @@ final class SupaBaseService: SupaBaseManager {
 
     private var client = SupabaseClient(supabaseURL: .supaBaseUrl(), supabaseKey: apiKey)
     var realtimeClient = RealtimeClient(endPoint: "https://dzdaoqpmncbxxnbotvmz.supabase.co/realtime/v1", params: ["apikey": apiKey])
- 
+    static let shared = SupaBaseService()
     
-    init() {
+   private init() {
 //        print("connect to Supabase realtime")
-     realtimeClient.connect()
+    realtimeClient.connect()
     }
 
     func request<T>(reqBody: Encodable, table: String) async throws -> T where T : Decodable{
@@ -46,7 +46,6 @@ final class SupaBaseService: SupaBaseManager {
     func delete(id: String) async throws  {
         do {
             try await client.database.from("Carbon").delete().eq(column: "id", value: id).execute()
-           
         }
         catch {
             print(error.localizedDescription)
@@ -75,14 +74,14 @@ final class SupaBaseService: SupaBaseManager {
        let result = realtimeClient.channel(.table("Carbon", schema: "public"))
         return result
     }
-    
-    func req(){
-        let userChanges = realtimeClient.channel(.table("Carbon", schema: "public"))
-        userChanges.on(.all) { message in
-            print(message.payload)
-        }
-        userChanges.subscribe()
-    }
+   
+//    func req(){
+//        let userChanges = realtimeClient.channel(.table("Carbon", schema: "public"))
+//        userChanges.on(.all) { message in
+//            print(message.payload)
+//        }
+//        userChanges.subscribe()
+//    }
  
 }
 
@@ -98,8 +97,8 @@ protocol SupaBaseRepository {
 
 class SupaBaseRepoImpl: SupaBaseRepository  {
  
-  
     @Service  private var supaBaseService: SupaBaseManager
+  
     
     func saveCarbonFt(req: DataModel, table: String)  -> Void {
         Task{
@@ -140,5 +139,62 @@ class SupaBaseRepoImpl: SupaBaseRepository  {
     }
     
 }
+
+
+/*
+ 
+ let json: [String: Any] = [
+     "table": "Carbon",
+     "type": "INSERT",
+     "record": [
+         "carbon_kg": "0.08",
+         "created_at": "2023-08-19T15:44:59.769",
+         "id": "64a0b2ee-0540-4afb-9f77-579031c5af7d",
+         "name": "Logistics"
+     ],
+     "schema": "public",
+     "commit_timestamp": "2023-08-19T15:45:00.958Z",
+     "errors": NSNull(), // Or you can use nil
+     "columns": [
+         ["name": "id", "type": "uuid"],
+         ["name": "created_at", "type": "timestamp"],
+         ["name": "carbon_kg", "type": "float4"],
+         ["name": "name", "type": "text"]
+     ]
+ ]
+
+ // Accessing values from the dictionary
+ if let table = json["table"] as? String,
+    let type = json["type"] as? String,
+    let record = json["record"] as? [String: Any],
+    let schema = json["schema"] as? String,
+    let commitTimestamp = json["commit_timestamp"] as? String,
+    let columns = json["columns"] as? [[String: String]] {
+     
+     let carbonKG = record["carbon_kg"] as? String ?? ""
+     let createdAt = record["created_at"] as? String ?? ""
+     let id = record["id"] as? String ?? ""
+     let name = record["name"] as? String ?? ""
+     
+     // Now you can use these extracted values as needed
+     print("Table: \(table)")
+     print("Type: \(type)")
+     print("Schema: \(schema)")
+     print("Commit Timestamp: \(commitTimestamp)")
+     print("Carbon KG: \(carbonKG)")
+     print("Created At: \(createdAt)")
+     print("ID: \(id)")
+     print("Name: \(name)")
+     
+     for column in columns {
+         if let columnName = column["name"], let columnType = column["type"] {
+             print("Column Name: \(columnName), Column Type: \(columnType)")
+         }
+     }
+ }
+
+ 
+ 
+ */
 
 

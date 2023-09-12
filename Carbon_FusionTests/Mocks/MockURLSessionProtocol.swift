@@ -5,9 +5,10 @@
 //  Created by Inyene Etoedia on 14/08/2023.
 //
 
-import Foundation
 
 #if DEBUG
+
+import Foundation
 
 class MockURLSessionProtocol: URLProtocol {
     
@@ -45,6 +46,8 @@ class MockURLSessionProtocol: URLProtocol {
 
 // URLSession with completion handler
 
+
+/*
 class MocksURLSessionProtocol: URLProtocol {
     
     static var loadingHandler: ((URLRequest, @escaping (HTTPURLResponse, Data?) -> Void) -> Void)?
@@ -76,6 +79,10 @@ class MocksURLSessionProtocol: URLProtocol {
         // Implementation for stopping loading if needed
     }
 }
+ 
+ */
+
+
 
 
 

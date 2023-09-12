@@ -17,11 +17,12 @@ protocol HttpRepository {
 }
 
 
- class HttpRepositoryImp : HttpRepository {
-  
+class HttpRepositoryImp : HttpRepository {
+    
     @Service  private var networkService: NetworkServiceManager
     @Service  private var supaBaseRepo: SupaBaseRepository
-
+    
+   
     
     //MARK: Post Energy request
     
@@ -36,18 +37,18 @@ protocol HttpRepository {
             case .success(let res):
                 let data = DataModel(carbonKg: (res.datum?.attributes?.carbon_kg)!, createdAt: (res.datum?.attributes?.estimated_at!)!, name: "Energy")
                 Task{
-                 self.supaBaseRepo.saveCarbonFt(req: data, table: "Carbon")
+                    self.supaBaseRepo.saveCarbonFt(req: data, table: "Carbon")
                 }
-               
+                
                 completion(.success(res))
-
+                
             case .failure(let err):
                 completion(.failure(err))
             }
         }
     }
     //
-  
+    
     
     
     func createFlight<T>(session: URLSession = .customSession, body: T, completion: @escaping (Result<FlightResponseModel, ApiError>) -> Void) where T : Decodable, T : Encodable {
@@ -59,8 +60,8 @@ protocol HttpRepository {
             switch result{
             case .success(let res):
                 let data = DataModel(carbonKg: (res.data?.attributes?.carbon_mt)!, createdAt: (res.data?.attributes?.estimated_at!)!, name: "Flight")
-
-                 self.supaBaseRepo.saveCarbonFt(req: data, table: "Carbon")
+                
+                self.supaBaseRepo.saveCarbonFt(req: data, table: "Carbon")
                 
                 completion(.success(res))
             case .failure(let err):
@@ -77,15 +78,15 @@ protocol HttpRepository {
             return
         }
         networkService.request(session: session, method: .post, path: .estimate, body: encoded) { (result: Result<ShipResponseModel, ApiError>) in
-                switch result {
-                case .success(let res):
-                    let data = DataModel(carbonKg: (res.data?.attributes?.carbon_kg)!, createdAt: (res.data?.attributes?.estimated_at!)!, name: "Logistics")
-                     self.supaBaseRepo.saveCarbonFt(req: data, table: "Carbon")
-            
-                    completion(.success(res))
-                case .failure(let err):
-                    completion(.failure(err))
-                }
+            switch result {
+            case .success(let res):
+                let data = DataModel(carbonKg: (res.data?.attributes?.carbon_kg)!, createdAt: (res.data?.attributes?.estimated_at!)!, name: "Logistics")
+                self.supaBaseRepo.saveCarbonFt(req: data, table: "Carbon")
+                
+                completion(.success(res))
+            case .failure(let err):
+                completion(.failure(err))
+            }
         }
     }
     
