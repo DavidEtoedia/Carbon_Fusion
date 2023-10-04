@@ -10,7 +10,7 @@ import Foundation
 
 class ShipViewModel: ObservableObject {
     @Service  private var supaBaseUsecase: SupaBaseUsecase
-    @Service private var repository : ApiRepository
+    @Service private var repository : ApiUsecase
     @Published var data: ResultState<DataModel, String> = .idle
    
     @Published var hasError : Bool = false
@@ -28,7 +28,7 @@ class ShipViewModel: ObservableObject {
         self.data = .loading
         let ship = ShippingReq(type: "shipping", weightValue: weightValue, weightUnit: weightUnit, distanceValue: distanceValue, distanceUnit: distanceUnit, transportMethod: transportMethod)
         
-        repository.createShipping(body: ship) { result in
+        repository.createShipping(req: ship) { result in
             switch result {
             case .success(let res):
                 self.data = .success(DataModel(carbonKg: res.data?.attributes?.carbon_kg ?? 0.0, createdAt: res.data?.attributes?.estimated_at ?? "", name: "Logistics"))

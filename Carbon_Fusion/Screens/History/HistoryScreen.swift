@@ -10,7 +10,7 @@ import SwiftUI
 struct HistoryScreen: View {
     //MARK: Navigation Path
     @EnvironmentObject private var supaBaseVm: SupbaseViewModel
-    @EnvironmentObject var router: Router<Path>
+    @EnvironmentObject var router: Router<Routes>
     
    
     @State private var isSelected: Bool = false
@@ -60,13 +60,16 @@ struct HistoryScreen: View {
         }
         .alert("Delete Alert", isPresented: $showAlert, actions: {
             HStack {
-              
                 Button(role: .none, action: {
                     showAlert = false
-                    supaBaseVm.delete(id: selectedid.lowercased())
-                    if(supaBaseVm.delete.isSuccess){
-                        router.pop()
+                    Task {
+                        let res: Void =  await supaBaseVm.delete(id: selectedid.lowercased())
+                        
+                        if(res == ()){
+                            router.pop()
+                        }
                     }
+                   
                 }, label: {
                     Text("Delete")
                         .foregroundColor(.red)
@@ -77,7 +80,7 @@ struct HistoryScreen: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         .padding(.horizontal, 20)
         .edgesIgnoringSafeArea(.bottom)
-    .background(.black)
+        .background(.black)
     }
     
     

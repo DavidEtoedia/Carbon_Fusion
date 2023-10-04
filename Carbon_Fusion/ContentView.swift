@@ -58,10 +58,9 @@ struct ContentView: View {
     
     
     var body: some View {
-        
+    
         
         VStack{
-            
             HStack{
                 Circle()
                     .foregroundColor(.white)
@@ -169,7 +168,6 @@ struct ContentView: View {
         }, message: {
             Text("An Error occured")
         })
-
         .onAppear{
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 // Code you want to execute after the delay
@@ -179,7 +177,9 @@ struct ContentView: View {
                     CGFloat( (supabaseVM.carbonFTP) / 100)
                 }
             }
-       
+        }
+        .refreshable {
+            print("Loading")
         }
 //        .onOpenURL { url in
 //            //    .widgetURL(URL(string: "app://fusionWiget/chart"))

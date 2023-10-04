@@ -15,7 +15,7 @@ class SupbaseViewModel: ObservableObject {
     @Published var energy: DataModel?
     @Published var logistics: DataModel?
     @Published var result: ResultState<[DataModel], String> = .idle
-    @Published var delete: ResultState<String?, String> = .idle
+    @Published var delete: ResultState<Void, String> = .idle
     @Published var hasError : Bool = false
     @Published var isDelete : Bool = false
     @Published var errorMsg : String = ""
@@ -75,18 +75,19 @@ class SupbaseViewModel: ObservableObject {
     }
     
     
-    func delete(id: String)  {
+    func delete(id: String) async  -> Void {
         self.delete = .loading
-        Task {
+        
             do{
               try await supabaseUsecase.delete(id: id)
-                self.delete = .success("Success")
+                return ()
+
             }
             catch {
                 hasError = true
                 self.result = .failure(error.localizedDescription)
             }
-        }
+    
       
     }
     
@@ -103,7 +104,7 @@ class SupbaseViewModel: ObservableObject {
             }
         }
         user.on(.delete) { message in
-            print(message.payload)
+            
             Task{
                 await self.getTotal()
             }

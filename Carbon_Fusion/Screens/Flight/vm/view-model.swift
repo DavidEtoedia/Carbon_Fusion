@@ -9,7 +9,7 @@ import Foundation
 
 class FlightViewModel: ObservableObject {
     @Service  private var supaBaseUseCase: SupaBaseUsecase
-    @Service private var repository : ApiRepository
+    @Service private var repository : ApiUsecase
     @Published var data: ResultState<DataModel, String> = .idle
     @Published var hasError : Bool = false
     
@@ -26,7 +26,7 @@ class FlightViewModel: ObservableObject {
         self.data = .loading
         let flight = FlightReq(type: "flight", passengers: 2, legs: legs)
         
-        repository.createFlight(body: flight) { result in
+        repository.createFlight(req: flight) { result in
             switch result {
             case .success(let res):
                 self.data = .success(DataModel(carbonKg: res.data?.attributes?.carbon_mt ?? 0.0, createdAt: res.data?.attributes?.estimated_at ?? "", name: "Flight"))

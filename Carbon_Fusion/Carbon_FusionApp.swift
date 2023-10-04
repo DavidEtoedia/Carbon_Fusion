@@ -21,6 +21,7 @@ struct Carbon_FusionApp: App {
                 .environmentObject(ShipViewModel())
                 .environmentObject(FlightViewModel())
                 .environmentObject(SupbaseViewModel())
+            
                 
         }
     }
