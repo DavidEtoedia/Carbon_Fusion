@@ -10,7 +10,7 @@ import XCTest
 
 final class SupbaseRepositorySuccessTest: XCTestCase {
     
-    private  var supabaseRepo: SupaBaseRepository!
+    private  var supabaseRepo: SupabaseRepository!
     
     override  func setUp() {
         supabaseRepo = MockSupaBaseRepository()

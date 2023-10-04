@@ -8,7 +8,7 @@
 import Foundation
 
 class SupbaseViewModel: ObservableObject {
-    private var supaBaseRepo: SupaBaseRepository
+   @Service private var supabaseUsecase : SupaBaseUsecase
     
     @Published var dataValue: DataModel = DataModel(carbonKg: 0.0, createdAt: "", name: "Carbon")
     @Published var flight: DataModel?
@@ -22,21 +22,25 @@ class SupbaseViewModel: ObservableObject {
     @Published var carbonFTP : Double = 0.0
     
 
+    
+
     init() {
-        let supaBaseRepo: SupaBaseRepository // Declare a local variable
-        
-        #if DEBUG
-        if UITestingHelper.isUITesting {
-            supaBaseRepo = MockSupaBaseRepository()
-        } else {
-            supaBaseRepo = SupaBaseRepoImpl()
-        }
-        #else
-        supaBaseRepo = SupaBaseRepository()
-        #endif
-        
-        // Now, use the local variable to initialize your property
-        self.supaBaseRepo = supaBaseRepo
+//        let supabaseUsecase: SupaBaseUsecaseRepository // Declare a local variable
+//
+//
+//
+//        #if DEBUG
+//        if UITestingHelper.isUITesting {
+//            supabaseUsecase = MockSupaBaseUsecase()
+//        } else {
+//            supabaseUsecase = ServiceContainer.resolve(.singleton, SupaBaseUsecase.self)!
+//        }
+//        #else
+//        supaBaseRepo = SupaBaseUsecase()
+//        #endif
+//
+//        // Now, use the local variable to initialize your property
+//        self.supabaseUsecase = supabaseUsecase
 
         // The rest of your code here
         Task {
@@ -51,7 +55,7 @@ class SupbaseViewModel: ObservableObject {
     func getTotal()async {
         self.result = .loading
         do {
-            let result = try  await supaBaseRepo.getRequest(table: "Carbon")
+            let result = try await supabaseUsecase.getAll()
            
             let totalCarbonKg = result?.reduce(0) { $0 + $1.carbonKg }
             carbonFTP = totalCarbonKg ?? 0
@@ -75,7 +79,7 @@ class SupbaseViewModel: ObservableObject {
         self.delete = .loading
         Task {
             do{
-              try await supaBaseRepo.delete(id: id)
+              try await supabaseUsecase.delete(id: id)
                 self.delete = .success("Success")
             }
             catch {
@@ -88,10 +92,11 @@ class SupbaseViewModel: ObservableObject {
     
     
     func getChannel(){
-        let user =  supaBaseRepo.realTime()
+   
+        let user =  supabaseUsecase.realtime()
         user.on(.insert) { message in
             print(message.payload)
-            
+
     //MARK: Make a request to get the updated values on the Table
             Task{
                 await self.getTotal()
@@ -106,11 +111,11 @@ class SupbaseViewModel: ObservableObject {
         user.subscribe()
         hasError = user.isErrored
     }
-//    
-//    func unsubscribe(){
-//        let user =  supaBaseRepo.realTime()
-//        user.unsubscribe()
-//    }
+    
+    func unsubscribe(){
+        let user =  supabaseUsecase.realtime()
+        user.unsubscribe()
+    }
     
 
 }

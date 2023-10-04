@@ -143,7 +143,7 @@ struct EnergyScreen: View {
 struct energy_screen_Previews: PreviewProvider {
     static var previews: some View {
 //
-        let _ = ServiceContainer.register(type: HttpRepository.self, HttpRepositoryImp())
+        let _ = ServiceContainer.register(type: ApiRepository.self, ApiImplementation())
         EnergyScreen()
             .environmentObject(EnergyViewModel())
     }

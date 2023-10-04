@@ -38,24 +38,33 @@ private extension Carbon_FusionApp {
 #if DEBUG
         if UITestingHelper.isUITesting{
             ServiceContainer.register(type: NetworkServiceManager.self, MockNetworkService())
+            ServiceContainer.register(type: ApiRepository.self, MockApiImplementation())
             ServiceContainer.register(type: MockSupaBaseManagerProtocol.self, MockSupaBaseMangerImpl())
-            ServiceContainer.register(type: SupaBaseRepository.self, MockSupaBaseRepository())
+            ServiceContainer.register(type: SupabaseRepository.self, MockSupaBaseRepository())
+            ServiceContainer.register(type: SupaBaseUsecase.self, SupaBaseUsecase())
+            ServiceContainer.register(type: ApiUsecase.self, ApiUsecase())
             
         }
         else{
             ServiceContainer.register(type: NetworkServiceManager.self, NetworkService())
             ServiceContainer.register(type: SupaBaseManager.self, SupaBaseService.shared)
-            ServiceContainer.register(type: SupaBaseRepository.self, SupaBaseRepoImpl())
-            ServiceContainer.register(type: HttpRepository.self, HttpRepositoryImp())
+            ServiceContainer.register(type: SupabaseRepository.self, SupabaseServiceImpl())
+            ServiceContainer.register(type: ApiRepository.self, ApiImplementation())
+            ServiceContainer.register(type: HttpNetworkService.self, HttpNetworkService())
+            ServiceContainer.register(type: SupaBaseUsecase.self, SupaBaseUsecase())
+            ServiceContainer.register(type: ApiUsecase.self, ApiUsecase())
             
             
             
         }
 #else
         ServiceContainer.register(type: NetworkServiceManager.self, NetworkService())
-        ServiceContainer.register(type: SupaBaseManager.self, SupaBaseService())
-        ServiceContainer.register(type: SupaBaseRepository.self, SupaBaseRepoImpl())
-        ServiceContainer.register(type: HttpRepository.self, HttpRepositoryImp())
+        ServiceContainer.register(type: SupaBaseManager.self, SupaBaseService.shared)
+        ServiceContainer.register(type: SupabaseRepository.self, SupabaseServiceImpl())
+        ServiceContainer.register(type: ApiRepository.self, ApiImplementation())
+        ServiceContainer.register(type: HttpNetworkService.self, HttpNetworkService())
+        ServiceContainer.register(type: SupaBaseUsecase.self, SupaBaseUsecase())
+        ServiceContainer.register(type: ApiUsecase.self, ApiUsecase())
         
         
 #endif

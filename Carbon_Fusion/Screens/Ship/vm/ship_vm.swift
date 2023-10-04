@@ -9,9 +9,10 @@ import Foundation
 
 
 class ShipViewModel: ObservableObject {
-    @Service  private var supaBaseRepo: SupaBaseRepository
+    @Service  private var supaBaseUsecase: SupaBaseUsecase
+    @Service private var repository : ApiRepository
     @Published var data: ResultState<DataModel, String> = .idle
-    @Service private var repository : HttpRepository
+   
     @Published var hasError : Bool = false
     
     init(){
@@ -27,7 +28,7 @@ class ShipViewModel: ObservableObject {
         self.data = .loading
         let ship = ShippingReq(type: "shipping", weightValue: weightValue, weightUnit: weightUnit, distanceValue: distanceValue, distanceUnit: distanceUnit, transportMethod: transportMethod)
         
-        repository.createShipping(session: .customSession ,body: ship) { result in
+        repository.createShipping(body: ship) { result in
             switch result {
             case .success(let res):
                 self.data = .success(DataModel(carbonKg: res.data?.attributes?.carbon_kg ?? 0.0, createdAt: res.data?.attributes?.estimated_at ?? "", name: "Logistics"))
@@ -44,7 +45,7 @@ class ShipViewModel: ObservableObject {
         Task{
             
             do {
-                let result = try  await supaBaseRepo.getRequest(table: "Carbon")
+                let result = try  await supaBaseUsecase.getAll()
                 let res = result?.filter{$0.name == "Logistics"}.last
                 self.data = .success(res ?? DataModel(carbonKg: 0, createdAt: "", name: ""))
                 hasError = false

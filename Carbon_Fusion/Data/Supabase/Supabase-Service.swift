@@ -24,6 +24,7 @@ final class SupaBaseService: SupaBaseManager {
     var realtimeClient = RealtimeClient(endPoint: "https://dzdaoqpmncbxxnbotvmz.supabase.co/realtime/v1", params: ["apikey": apiKey])
     static let shared = SupaBaseService()
     
+    
    private init() {
 //        print("connect to Supabase realtime")
     realtimeClient.connect()
@@ -86,59 +87,6 @@ final class SupaBaseService: SupaBaseManager {
 }
 
 
-
-
-protocol SupaBaseRepository {
-    func saveCarbonFt(req: DataModel, table: String)  -> Void
-    func delete(id: String) async throws -> Void
-    func getRequest(table: String) async throws -> [DataModel]?
-    func realTime() -> Realtime.Channel
-}
-
-class SupaBaseRepoImpl: SupaBaseRepository  {
- 
-    @Service  private var supaBaseService: SupaBaseManager
-  
-    
-    func saveCarbonFt(req: DataModel, table: String)  -> Void {
-        Task{
-            
-            let res: DataModel? =  try? await supaBaseService.request(reqBody: req, table: table)
-            guard let _ = res else {
-                print("AN Error occured\(String(describing: res?.carbonKg))")
-                return
-            }
-        }
-    }
-    
-    
-    func delete(id: String) async throws {
-        do {
-            try await supaBaseService.delete(id: id)
-        }
-        catch {
-            throw error
-        }
-    }
-    
-    
-    func getRequest(table: String) async throws -> [DataModel]? {
-        do{
-            let res: [DataModel]? = try await supaBaseService.getRequest(table: table)
-            return res
-        }
-        catch{
-            print(error.localizedDescription)
-            throw error
-        }
-    }
-    
-    
-    func realTime() -> Realtime.Channel {
-        return supaBaseService.realTimeReq()
-    }
-    
-}
 
 
 /*

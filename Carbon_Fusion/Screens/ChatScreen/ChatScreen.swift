@@ -24,7 +24,6 @@ struct ChatScreen: View {
             }
            // .chartYScale(domain: 0...1000)
             .chartXAxis {
-                
                 AxisMarks(values: .automatic) { value in
                 AxisValueLabel() { // construct Text here
                   if let intValue = value.as(String.self) {
@@ -55,9 +54,7 @@ struct ChatScreen: View {
             
               Text(enteredText)
                 .foregroundColor(.white)
-            
-            PINCodeView(pinCode: $enteredText)
-           // CustomKeypadView(text: $enteredText)
+        
         
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
@@ -77,120 +74,10 @@ struct ChatScreen_Previews: PreviewProvider {
 
 
 
-struct CustomKeypadView: View {
-    @Binding var text: String
-    
-    let keypadRows: [[String]] = [
-        ["1", "2", "3"],
-        ["4", "5", "6"],
-        ["7", "8", "9"],
-        ["", "0", "Delete"]
-    ]
-    
-    var body: some View {
-        VStack(spacing: 10) {
-            ForEach(keypadRows, id: \.self) { row in
-                HStack(spacing: 10) {
-                    ForEach(row, id: \.self) { key in
-                        Button(action: {
-                            if key == "Delete" {
-                                text = String(text.dropLast())
-                            } else {
-                                text += key
-                            }
-                        }) {
-                            if key == "Delete" {
-                                Image(systemName: "delete.left")
-                                    .font(.system(size: 24))
-                                    .foregroundColor(.red)
-                            } else {
-                                Text(key)
-                                    .font(.system(size: 24))
-                                    .frame(width: 60, height: 60)
-                                    .background(Color.gray.opacity(0.2))
-                                    .cornerRadius(10)
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        .padding()
-    }
-}
 
 
 
 
-
-
-struct PINCodeView: View {
-    @Binding var pinCode: String
-    let maxDigits = 4
-    
-    let keypadRows: [[String]] = [
-        ["1", "2", "3"],
-        ["4", "5", "6"],
-        ["7", "8", "9"],
-        ["", "0", "Delete"]
-    ]
-    
-    var body: some View {
-        VStack(spacing: 20) {
-            HStack(spacing: 15) {
-                ForEach(0..<maxDigits, id: \.self) { index in
-                    Text(pinCode.count > index ? "•" : "")
-                        .font(.title)
-                        .frame(width: 50, height: 50)
-                        .background(Color.gray.opacity(0.2))
-                        .cornerRadius(10)
-                }
-            }
-            
-            ForEach(keypadRows, id: \.self) { row in
-                HStack(spacing: 10) {
-                    ForEach(row, id: \.self) { key in
-                        Button(action: {
-                            if key == "Delete" {
-                                pinCode = String(pinCode.dropLast())
-                            } else if pinCode.count < maxDigits {
-                                pinCode.append(key)
-                            }
-                        }) {
-                            if key == "Delete" {
-                                Image(systemName: "delete.left")
-                                    .font(.system(size: 24))
-                                    .foregroundColor(.red)
-                            } else {
-                                Text(key)
-                                    .font(.system(size: 24))
-                                    .frame(width: 60, height: 60)
-                                    .background(Color.gray.opacity(0.2))
-                                    .cornerRadius(10)
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        .padding()
-    }
-}
-
-
-struct PinCodeBox: View {
-    var value: Character?
-    
-    var body: some View {
-        RoundedRectangle(cornerRadius: 10)
-            .frame(width: 50, height: 50)
-            .overlay(
-                Text(value.map(String.init) ?? "")
-                    .font(.title)
-            )
-            .foregroundColor(Color.gray.opacity(0.2))
-    }
-}
 
 extension String {
     func character(at index: Int) -> Character? {

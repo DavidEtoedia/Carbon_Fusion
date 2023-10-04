@@ -149,13 +149,13 @@ struct ContentView: View {
                 .onTapGesture {
                     router.push(.FlightScreen)
                 }
-                .accessibilityIdentifier("logistics")
+                .accessibilityIdentifier("Flights")
             
             CarbonCard(name: "logistics", value:String(  supabaseVM.logistics?.carbonKg.rounded(toDecimalPlaces: 1) ?? 0.0), image: "ship", isLoading: supabaseVM.result.isLoading)
                 .onTapGesture {
                     router.push(.LogisticsScreen, value: nil)
                 }
-                .accessibilityIdentifier("Flights")
+                .accessibilityIdentifier("logistics")
 
                 
         }

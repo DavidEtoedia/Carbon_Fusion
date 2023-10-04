@@ -11,19 +11,9 @@ import Foundation
 import Realtime
 
 
-protocol MockSupaBaseRepoProtocol {
-    func saveCarbonFt(req: DataModel, table: String)  -> Void
-    func delete(id: String) async throws -> Void
-    func getRequest(table: String) async throws -> [DataModel]?
-}
 
+class MockSupaBaseRepository: SupabaseRepository {
 
-class MockSupaBaseRepository: SupaBaseRepository {
-    func realTime() -> Realtime.Channel {
-       // return
-        fatalError("This is testing phase")
-    }
-    
     var saveCarbonFtCalled = false
     var deleteCalled = false
     var getRequestCalled = false
@@ -42,10 +32,13 @@ class MockSupaBaseRepository: SupaBaseRepository {
         let result = [DataModel(carbonKg: 0.4, createdAt: "", name: ""),  DataModel(carbonKg: 0.4, createdAt: "", name: "")]
         return result
     }
-
+    
 }
 
 #endif
+
+
+
 
 //class SupaBaseRepoImplTests: XCTestCase {
 //    func testSaveCarbonFt() {
